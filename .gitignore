@@ -30,7 +30,6 @@
 .pub-cache/
 .pub/
 /build/
-/ios/
 /test/
 /web/
 /pubspec.lock
