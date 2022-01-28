@@ -1,0 +1,16 @@
+{
+  "addrList": [""],
+  "cartList": [""],
+  "collections": [""],
+  "create_at": "",
+  "email": "",
+  "id": 0,
+  "is_locked": 0,
+  "nickname": "",
+  "safe_level": 0,
+  "update_at": "",
+  "username": "",
+  "avatar": "",
+  "personal_desc": "",
+  "phone": ""
+}

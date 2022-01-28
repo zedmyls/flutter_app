@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/common/user_controller.dart';
+import 'package:get/get.dart';
 
 class ProfileView extends StatelessWidget {
+  UserController get _controller => Get.find();
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height / 1.8;
@@ -26,15 +30,15 @@ class ProfileView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      buildOption(Icons.pie_chart, 'Leaders', false),
-                      buildOption(Icons.show_chart, 'Level Up', false),
-                      buildOption(Icons.card_giftcard, 'Gifts', false),
+                      buildOption(Icons.account_circle_rounded, '账号管理', false),
+                      buildOption(Icons.location_city_outlined, '地址管理', false),
+                      buildOption(Icons.settings, '通用设置', false),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      buildOption(Icons.code, 'QR Code', false),
+                      buildOption(Icons.card_giftcard, '关于我们', false),
                       buildOption(Icons.pie_chart, 'Daily bonus', false),
                       buildOption(Icons.remove_red_eye, 'Visitors', false),
                     ],
@@ -98,14 +102,14 @@ class ProfileView extends StatelessWidget {
                           shape: BoxShape.circle,
                           image: DecorationImage(
                             fit: BoxFit.fill,
-                            image: new NetworkImage(
-                                "http://www.usanetwork.com/sites/usanetwork/files/styles/629x720/public/suits_cast_harvey.jpg?itok=fpTOeeBb"),
+                            image: NetworkImage(_controller.user.avatar ??
+                                'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_bt%2F0%2F13699153794%2F1000.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1645933980&t=90749073f3723aa26911bf38814885e4'),
                           ),
                         ),
                       ),
                       SizedBox(height: 15.0),
                       Text(
-                        'ID: 142563225',
+                        '登录名: ${_controller.user.username}',
                         style: TextStyle(color: Colors.white70),
                       )
                     ],
@@ -139,7 +143,7 @@ class ProfileView extends StatelessWidget {
             alignment: Alignment.center,
             padding: EdgeInsets.all(16.0),
             child: Text(
-              "Javier González Rodríguez",
+              _controller.user.nickname!,
               style: TextStyle(
                 fontSize: 25.0,
                 color: Colors.white,
@@ -154,7 +158,9 @@ class ProfileView extends StatelessWidget {
               children: <Widget>[
                 buildOption(Icons.group_add, "Friends", true),
                 buildOption(Icons.group, "Groups", true),
-                buildOption(Icons.assignment_outlined, "订单", true),
+                buildOption(Icons.assignment_outlined, "订单", true, onTap: () {
+                  print(1);
+                }),
                 buildOption(Icons.star, "收藏", true),
               ],
             ),
@@ -165,26 +171,29 @@ class ProfileView extends StatelessWidget {
     );
   }
 
-  Widget buildOption(IconData icon, String text, bool top) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Container(
-          padding: EdgeInsets.only(bottom: 10.0),
-          child: Icon(
-            icon,
-            size: 37.0,
-            color: top ? Colors.white : Colors.grey,
+  Widget buildOption(IconData icon, String text, bool top, {VoidCallback? onTap}) {
+    return InkWell(
+      onTap: onTap,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(bottom: 10.0),
+            child: Icon(
+              icon,
+              size: 37.0,
+              color: top ? Colors.white : Colors.grey,
+            ),
           ),
-        ),
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: 15.0,
-            color: top ? Colors.white : Colors.black,
+          Text(
+            text,
+            style: TextStyle(
+              fontSize: 15.0,
+              color: top ? Colors.white : Colors.black,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

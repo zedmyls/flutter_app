@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/common/user_controller.dart';
 import 'package:get/get.dart';
 
 class HttpUtils {
@@ -13,9 +14,14 @@ class HttpUtils {
       _dio!.options.baseUrl = 'http://localhost:3000/api/';
       _dio!.options.connectTimeout = 10000;
 
+      final UserController _controller = Get.find();
+
       _dio!.interceptors.add(
         InterceptorsWrapper(
           onRequest: (RequestOptions options, handler) {
+            if (_controller.isLogin) {
+              options.headers['Authorization'] = 'Bearer ${_controller.token}';
+            }
             print('上传接口：${options.uri}');
             return handler.next(options);
           },

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/app/common/models/option_model_model.dart';
+import 'package:flutter_app/app/common/models/option_model.dart';
 import 'package:flutter_app/app/modules/tabs/home/enum/goods_type.dart';
 import 'package:get/get.dart';
 
