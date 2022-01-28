@@ -152,6 +152,16 @@ class ProfileView extends StatelessWidget {
             ),
           ),
           Container(
+            alignment: Alignment.center,
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              _controller.user.personalDesc ?? '这个人有点懒，还没有写个人简介',
+              style: TextStyle(
+                color: Colors.white70,
+              ),
+            ),
+          ),
+          Container(
             padding: EdgeInsets.only(top: 30.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
