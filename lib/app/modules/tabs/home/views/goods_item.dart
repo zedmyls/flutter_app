@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/modules/tabs/home/goods_item_model.dart';
+import 'package:flutter_app/app/routes/app_pages.dart';
+import 'package:get/get.dart';
 
 class GoodsItem extends StatelessWidget {
   final GoodsItemModel item;
@@ -11,7 +13,9 @@ class GoodsItem extends StatelessWidget {
       padding: const EdgeInsets.only(left: 24, right: 24, top: 8, bottom: 16),
       child: InkWell(
         splashColor: Colors.transparent,
-        onTap: () {},
+        onTap: () {
+          Get.toNamed(Routes.GOODS_DETAIL, arguments: item.id);
+        },
         child: Container(
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(16.0)),

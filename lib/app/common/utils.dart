@@ -26,3 +26,11 @@ void showSuccessMessage(String message) {
     ),
   );
 }
+
+String formatStarCount(int count) {
+  if (count < 1000) {
+    return count.toString();
+  } else {
+    return '${(count / 1000).toStringAsFixed(1)}k';
+  }
+}

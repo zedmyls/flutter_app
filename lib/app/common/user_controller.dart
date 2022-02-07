@@ -1,4 +1,3 @@
-import 'package:flutter_app/app/common/cache/StorageUtils.dart';
 import 'package:flutter_app/app/common/models/user_model.dart';
 import 'package:flutter_app/app/common/network/global.dart';
 import 'package:get/get.dart';
@@ -15,7 +14,7 @@ class UserController extends GetxController {
   String get token => _token.value;
 
   set token(String token) {
-    StorageUtils.db.setString('cache-token-key', token);
+    // StorageUtils.db.setString('cache-token-key', token);
     _token.value = token;
   }
 
@@ -28,8 +27,8 @@ class UserController extends GetxController {
 
   @override
   void onInit() {
-    String? cacheToken = StorageUtils.db.getString('cache-token-key');
-    if (cacheToken != null) _token.value = cacheToken;
+    // String? cacheToken = StorageUtils.db.getString('cache-token-key');
+    // if (cacheToken != null) _token.value = cacheToken;
 
     load();
     super.onInit();
