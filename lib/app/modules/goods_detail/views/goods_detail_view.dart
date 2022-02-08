@@ -202,7 +202,9 @@ class GoodsDetailView extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
             child: RaisedButton(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40.0)),
-              onPressed: () {},
+              onPressed: () {
+                controller.addToCart();
+              },
               child: Text("加入购物车"),
               color: Colors.orange,
               textColor: Colors.white,

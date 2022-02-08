@@ -5,6 +5,7 @@ void showErrorMessage(String message) {
   Get.snackbar(
     'Error:',
     message,
+    duration: Duration(milliseconds: 1500),
     colorText: Colors.red,
     isDismissible: true,
     icon: Icon(
@@ -18,6 +19,7 @@ void showSuccessMessage(String message) {
   Get.snackbar(
     'Success:',
     message,
+    duration: Duration(milliseconds: 1500),
     colorText: Colors.greenAccent,
     isDismissible: true,
     icon: Icon(

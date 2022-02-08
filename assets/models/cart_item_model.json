@@ -7,7 +7,8 @@
     "id": 1,
     "price": 99,
     "sales": 48562,
-    "title": ""
+    "title": "",
+    "_id": ""
   },
   "num": 0,
   "isChecked": true

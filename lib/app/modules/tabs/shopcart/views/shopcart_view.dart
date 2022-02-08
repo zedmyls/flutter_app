@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/common/user_controller.dart';
 import 'package:flutter_app/app/common/views/need_login_view.dart';
+import 'package:flutter_app/app/modules/tabs/shopcart/cart_item/views/cart_item_view.dart';
 import 'package:flutter_app/app/modules/tabs/shopcart/controllers/shopcart_controller.dart';
 import 'package:flutter_app/app/modules/tabs/shopcart/views/cart_empty_view.dart';
-import 'package:flutter_app/app/modules/tabs/shopcart/views/cart_item_view.dart';
 import 'package:get/get.dart';
 
 class ShopcartView extends GetView<ShopcartController> {

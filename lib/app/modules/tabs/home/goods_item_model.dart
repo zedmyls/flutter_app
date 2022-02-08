@@ -7,9 +7,19 @@ class GoodsItemModel {
   int? price;
   int? sales;
   String? title;
+  String? id_;
 
-  GoodsItemModel(
-      {this.category, this.collected, this.comeOutTime, this.coverUrl, this.id, this.price, this.sales, this.title});
+  GoodsItemModel({
+    this.category,
+    this.collected,
+    this.comeOutTime,
+    this.coverUrl,
+    this.id,
+    this.price,
+    this.sales,
+    this.title,
+    this.id_,
+  });
 
   GoodsItemModel.fromJson(Map<String, dynamic> json) {
     category = json['category'];
@@ -20,6 +30,7 @@ class GoodsItemModel {
     price = json['price'];
     sales = json['sales'];
     title = json['title'];
+    id_ = json['_id'];
   }
 
   Map<String, dynamic> toJson() {
@@ -29,6 +40,7 @@ class GoodsItemModel {
     data['comeOutTime'] = comeOutTime;
     data['coverUrl'] = coverUrl;
     data['id'] = id;
+    data['_id'] = id_;
     data['price'] = price;
     data['sales'] = sales;
     data['title'] = title;
