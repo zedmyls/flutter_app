@@ -49,4 +49,9 @@ class TabsController extends GetxController with GetIndexListMixin<Widget> {
 
   @override
   List<Widget> get indexList => _pages;
+
+  // 返回首页
+  goHome() {
+    index = 0;
+  }
 }

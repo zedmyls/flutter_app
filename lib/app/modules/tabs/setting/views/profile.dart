@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/common/constant.dart';
 import 'package:flutter_app/app/common/user_controller.dart';
 import 'package:get/get.dart';
 
@@ -102,8 +103,7 @@ class ProfileView extends StatelessWidget {
                           shape: BoxShape.circle,
                           image: DecorationImage(
                             fit: BoxFit.fill,
-                            image: NetworkImage(_controller.user.avatar ??
-                                'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_bt%2F0%2F13699153794%2F1000.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1645933980&t=90749073f3723aa26911bf38814885e4'),
+                            image: NetworkImage(_controller.user.avatar ?? defaultNetworkImg),
                           ),
                         ),
                       ),
