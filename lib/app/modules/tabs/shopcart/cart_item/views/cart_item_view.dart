@@ -14,7 +14,8 @@ class CartItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(CartItemController(item.num!), tag: item.goodsId!.id_);
+    // 不加 permanent，则会被删除，但会一直活在内存中, 存疑 fixme
+    Get.put(CartItemController(item), tag: item.goodsId!.id_, permanent: true);
     return Slidable(
       closeOnScroll: false, // 上下滚动时，不关闭
       startActionPane: ActionPane(
@@ -22,13 +23,17 @@ class CartItemView extends StatelessWidget {
         motion: const ScrollMotion(),
         children: [
           SizedBox(width: 10),
-          InkWell(
-            child: Image.asset(
-              'assets/images/unchecked.png',
-              fit: BoxFit.fitWidth,
-              width: 25,
+          Obx(
+            () => InkWell(
+              child: Image.asset(
+                _controller.isChecked ? 'assets/images/checked.png' : 'assets/images/unchecked.png',
+                fit: BoxFit.fitWidth,
+                width: 25,
+              ),
+              onTap: () {
+                _controller.toggleCheckStatus();
+              },
             ),
-            onTap: () {},
           ),
         ],
       ),
@@ -37,7 +42,9 @@ class CartItemView extends StatelessWidget {
         motion: ScrollMotion(),
         children: [
           SlidableAction(
-            onPressed: (context) {},
+            onPressed: (context) {
+              _controller.deleteCartItem(item.goodsId!.id_!);
+            },
             backgroundColor: Color(0xFFFE4A49),
             foregroundColor: Colors.white,
             icon: Icons.delete,
@@ -75,8 +82,9 @@ class CartItemView extends StatelessWidget {
                         Flexible(
                           child: Text(
                             item.goodsId!.title!,
-                            overflow: TextOverflow.fade,
+                            overflow: TextOverflow.ellipsis,
                             softWrap: true,
+                            maxLines: 2,
                             style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
                           ),
                         ),
@@ -100,14 +108,16 @@ class CartItemView extends StatelessWidget {
                         SizedBox(
                           width: 5,
                         ),
-                        Text(
-                          '￥${item.goodsId!.price! * item.num!}',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Colors.orange,
+                        Obx(
+                          () => Text(
+                            '￥${item.goodsId!.price! * _controller.goodsNum}',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.orange,
+                            ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                     Obx(

@@ -42,39 +42,55 @@ class ShopcartView extends GetView<ShopcartController> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-              padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    "Checkout Price:",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                  ),
-                  Spacer(),
-                  Text(
-                    "Rs. 5000",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                  )
-                ],
-              )),
+            padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+            child: Row(
+              children: <Widget>[
+                Text(
+                  "Checkout Price:",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                ),
+                Spacer(),
+                Text(
+                  "￥ ${controller.totalPrice}",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                )
+              ],
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Material(
               color: Colors.red,
               elevation: 1.0,
-              child: InkWell(
-                splashColor: Colors.redAccent,
-                onTap: () {},
-                child: Container(
-                  width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      "结算",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
+              child: Row(
+                children: [
+                  InkWell(
+                    child: Image.asset(
+                      controller.isCheckedAll ? 'assets/images/checked.png' : 'assets/images/unchecked.png',
+                      fit: BoxFit.fitWidth,
+                      width: 25,
                     ),
+                    onTap: () {
+                      controller.checkAll();
+                    },
                   ),
-                ),
+                  InkWell(
+                    splashColor: Colors.redAccent,
+                    onTap: () {
+                      print(controller.goodsIds);
+                    },
+                    child: Container(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(
+                          "结算",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
               ),
             ),
           ),

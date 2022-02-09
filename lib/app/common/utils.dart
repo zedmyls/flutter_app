@@ -1,4 +1,6 @@
+import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
 void showErrorMessage(String message) {
@@ -35,4 +37,12 @@ String formatStarCount(int count) {
   } else {
     return '${(count / 1000).toStringAsFixed(1)}k';
   }
+}
+
+// 带 loading_toast 的 请求
+loadingToast(Future Function() request, {Function(dio.Response res)? successCallback}) async {
+  EasyLoading.show();
+  final res = await request();
+  EasyLoading.dismiss();
+  if (successCallback != null) successCallback(res);
 }

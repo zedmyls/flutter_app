@@ -12,6 +12,8 @@ dependencies:
   pull_to_refresh: 2.0.0
   shared_preferences: 2.0.12
   flutter_slidable: 1.2.0
+  flutter_easyloading: ^3.0.3
+
   flutter: 
     sdk: flutter
 
