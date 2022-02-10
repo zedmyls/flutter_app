@@ -12,6 +12,8 @@ abstract class Routes {
   static const CATEGORY = _Paths.TABS + _Paths.CATEGORY;
   static const GOODS_LIST = _Paths.TABS + _Paths.HOME + _Paths.GOODS_LIST;
   static const GOODS_DETAIL = _Paths.GOODS_DETAIL;
+  static const ADDRESS_LIST =
+      _Paths.TABS + _Paths.SETTING + _Paths.ADDRESS_LIST;
 }
 
 abstract class _Paths {
@@ -23,4 +25,5 @@ abstract class _Paths {
   static const CATEGORY = '/category';
   static const GOODS_LIST = '/goods-list';
   static const GOODS_DETAIL = '/goods-detail';
+  static const ADDRESS_LIST = '/address-list';
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/common/constant.dart';
 import 'package:flutter_app/app/common/user_controller.dart';
+import 'package:flutter_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 class ProfileView extends StatelessWidget {
@@ -32,7 +33,9 @@ class ProfileView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       buildOption(Icons.account_circle_rounded, '账号管理', false),
-                      buildOption(Icons.location_city_outlined, '地址管理', false),
+                      buildOption(Icons.location_city_outlined, '地址管理', false, onTap: () {
+                        Get.toNamed(Routes.ADDRESS_LIST);
+                      }),
                       buildOption(Icons.settings, '通用设置', false),
                     ],
                   ),
