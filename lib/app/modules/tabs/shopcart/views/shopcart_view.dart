@@ -11,7 +11,9 @@ class ShopcartView extends GetView<ShopcartController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('购物车'),
+        title: Obx(
+          () => Text('购物车 (${controller.totalCount})'),
+        ),
       ),
       body: Obx(
         () => !Get.find<UserController>().isLogin
