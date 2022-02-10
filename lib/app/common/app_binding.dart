@@ -10,10 +10,12 @@ class AppBinding extends Bindings {
   @override
   void dependencies() {
     Get.put(UserController(), permanent: true);
-    Get.put(TabsController(), permanent: true);
     Get.put(HomeController(), permanent: true);
     Get.put(SettingController(), permanent: true);
     Get.put(CategoryController(), permanent: true);
+
+    // 这两个Controller的put先后顺序不能变
     Get.put(ShopcartController(), permanent: true);
+    Get.put(TabsController(), permanent: true);
   }
 }

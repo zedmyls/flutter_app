@@ -59,27 +59,28 @@ class ShopcartView extends GetView<ShopcartController> {
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Material(
-              color: Colors.red,
-              elevation: 1.0,
-              child: Row(
-                children: [
-                  InkWell(
-                    child: Image.asset(
-                      controller.isCheckedAll ? 'assets/images/checked.png' : 'assets/images/unchecked.png',
-                      fit: BoxFit.fitWidth,
-                      width: 25,
-                    ),
-                    onTap: () {
-                      controller.checkAll();
-                    },
+            child: Row(
+              children: [
+                InkWell(
+                  child: Image.asset(
+                    controller.isCheckedAll ? 'assets/images/checked.png' : 'assets/images/unchecked.png',
+                    fit: BoxFit.fitWidth,
+                    width: 25,
                   ),
-                  InkWell(
-                    splashColor: Colors.redAccent,
-                    onTap: () {
-                      print(controller.goodsIds);
-                    },
-                    child: Container(
+                  onTap: () {
+                    controller.checkAll();
+                  },
+                ),
+                SizedBox(width: 10),
+                Expanded(
+                  child: Material(
+                    color: Colors.red,
+                    elevation: 1.0,
+                    child: InkWell(
+                      splashColor: Colors.redAccent,
+                      onTap: () {
+                        print(controller.goodsIds);
+                      },
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Text(
@@ -89,9 +90,9 @@ class ShopcartView extends GetView<ShopcartController> {
                         ),
                       ),
                     ),
-                  )
-                ],
-              ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],

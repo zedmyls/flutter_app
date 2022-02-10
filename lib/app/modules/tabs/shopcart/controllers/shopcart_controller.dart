@@ -13,6 +13,7 @@ class ShopcartController extends GetxController {
   String get url => 'carts';
   bool get isCheckedAll => goodsIds.length == cartList.length;
   int get totalPrice => _totalPrice.value;
+  int get totalCount => cartList.length;
 
   checkAll() {
     if (isCheckedAll) {
