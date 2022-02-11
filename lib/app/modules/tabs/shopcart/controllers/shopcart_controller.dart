@@ -104,7 +104,7 @@ class ShopcartController extends GetxController {
   @override
   void onInit() {
     if (_controller.isLogin) {
-      load();
+      loadingToast(() => load());
     }
     super.onInit();
   }

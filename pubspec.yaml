@@ -14,7 +14,7 @@ dependencies:
   flutter_slidable: 1.2.0
   flutter_easyloading: ^3.0.3
   badges: ^2.0.2
-
+  city_pickers: 1.0.1
   flutter: 
     sdk: flutter
 
