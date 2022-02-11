@@ -14,6 +14,13 @@ class AddressListController extends GetxController {
     });
   }
 
+  // 删除地址
+  deleteAddr(int id) {
+    loadingToast(() => HttpUtils.instance.delete('$url/$id'), successCallback: (res) {
+      loadingToast(() => load());
+    });
+  }
+
   @override
   void onInit() {
     load();

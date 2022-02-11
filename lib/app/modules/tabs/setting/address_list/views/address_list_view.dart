@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/app/common/utils.dart';
 import 'package:flutter_app/app/common/views/no_data.dart';
 import 'package:flutter_app/app/common/views/tag_view.dart';
+import 'package:flutter_app/app/routes/app_pages.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 
@@ -42,7 +43,9 @@ class AddressListView extends GetView<AddressListController> {
           height: 44,
           child: ElevatedButton(
             child: Text('新增地址'),
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(Routes.ADDRESS_EDIT);
+            },
           ),
         ),
       ),
@@ -57,7 +60,13 @@ class AddressListView extends GetView<AddressListController> {
         children: [
           SlidableAction(
             onPressed: (context) {
-              confirmDialog(title: '⚠ 警告', msg: '确定要删除该地址吗？');
+              confirmDialog(
+                title: '⚠ 警告',
+                msg: '确定要删除该地址吗？',
+                onConfirm: () {
+                  controller.deleteAddr(item.id!);
+                },
+              );
             },
             backgroundColor: Color(0xFFFE4A49),
             foregroundColor: Colors.white,
