@@ -116,8 +116,14 @@ class AddressListView extends GetView<AddressListController> {
             ),
           ),
           trailing: IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.edit_location_outlined),
+            onPressed: () {
+              Get.toNamed(Routes.ADDRESS_EDIT, arguments: item.id!);
+            },
+            icon: Image(
+              image: AssetImage('assets/images/edit.png'),
+              fit: BoxFit.fitWidth,
+              width: 25,
+            ),
           ),
         ),
       ),

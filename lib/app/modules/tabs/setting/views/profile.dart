@@ -32,19 +32,19 @@ class ProfileView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      buildOption(Icons.account_circle_rounded, '账号管理', false),
-                      buildOption(Icons.location_city_outlined, '地址管理', false, onTap: () {
+                      buildOption('assets/images/yonghuguanli.png', '账号管理', false),
+                      buildOption('assets/images/dizhi.png', '地址管理', false, onTap: () {
                         Get.toNamed(Routes.ADDRESS_LIST);
                       }),
-                      buildOption(Icons.settings, '通用设置', false),
+                      buildOption('assets/images/shezhi.png', '通用设置', false),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      buildOption(Icons.card_giftcard, '关于我们', false),
-                      buildOption(Icons.pie_chart, 'Daily bonus', false),
-                      buildOption(Icons.remove_red_eye, 'Visitors', false),
+                      buildOption('assets/images/guanyuwomen.png', '关于我们', false),
+                      buildOption('assets/images/daifufeizhangdan.png', 'Daily bonus', false),
+                      buildOption('assets/images/yanjing.png', 'Visitors', false),
                     ],
                   ),
                 ],
@@ -169,12 +169,12 @@ class ProfileView extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                buildOption(Icons.group_add, "Friends", true),
-                buildOption(Icons.group, "Groups", true),
-                buildOption(Icons.assignment_outlined, "订单", true, onTap: () {
+                buildOption('assets/images/group.png', "Friends", true),
+                buildOption('assets/images/group.png', "Groups", true),
+                buildOption('assets/images/dingdan1.png', "订单", true, onTap: () {
                   print(1);
                 }),
-                buildOption(Icons.star, "收藏", true),
+                buildOption('assets/images/shoucang1.png', "收藏", true),
               ],
             ),
           ),
@@ -184,7 +184,7 @@ class ProfileView extends StatelessWidget {
     );
   }
 
-  Widget buildOption(IconData icon, String text, bool top, {VoidCallback? onTap}) {
+  Widget buildOption(String iconUrl, String text, bool top, {VoidCallback? onTap}) {
     return InkWell(
       onTap: onTap,
       child: Column(
@@ -192,10 +192,10 @@ class ProfileView extends StatelessWidget {
         children: <Widget>[
           Container(
             padding: EdgeInsets.only(bottom: 10.0),
-            child: Icon(
-              icon,
-              size: 37.0,
-              color: top ? Colors.white : Colors.grey,
+            child: Image(
+              image: AssetImage(iconUrl),
+              width: 30.0,
+              fit: BoxFit.fitWidth,
             ),
           ),
           Text(

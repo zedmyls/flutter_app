@@ -26,11 +26,19 @@ class TabsController extends GetxController with GetIndexListMixin<Widget> {
     tabs = [
       BottomNavigationBarItem(
         label: '首页',
-        icon: Icon(Icons.home),
+        icon: Image(
+          image: AssetImage('assets/images/shouye.png'),
+          fit: BoxFit.fitWidth,
+          width: 24,
+        ),
       ),
       BottomNavigationBarItem(
         label: '分类',
-        icon: Icon(Icons.category),
+        icon: Image(
+          image: AssetImage('assets/images/fenlei.png'),
+          fit: BoxFit.fitWidth,
+          width: 24,
+        ),
       ),
       BottomNavigationBarItem(
         label: '购物车',
@@ -42,15 +50,27 @@ class TabsController extends GetxController with GetIndexListMixin<Widget> {
                 color: Colors.white,
               ),
             ),
-            child: Icon(Icons.shopping_cart),
+            child: Image(
+              image: AssetImage('assets/images/gouwuche.png'),
+              fit: BoxFit.fitWidth,
+              width: 24,
+            ),
             showBadge: cartController.totalCount > 0,
           ),
         ),
-        activeIcon: Icon(Icons.shopping_cart),
+        activeIcon: Image(
+          image: AssetImage('assets/images/gouwuche.png'),
+          fit: BoxFit.fitWidth,
+          width: 24,
+        ),
       ),
       BottomNavigationBarItem(
         label: '我的',
-        icon: Icon(Icons.account_circle_rounded),
+        icon: Image(
+          image: AssetImage('assets/images/wode.png'),
+          fit: BoxFit.fitWidth,
+          width: 24,
+        ),
       ),
     ];
     super.onInit();

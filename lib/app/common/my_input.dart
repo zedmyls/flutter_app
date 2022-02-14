@@ -1,46 +1,85 @@
 import 'package:flutter/material.dart';
 
-class MyInput extends StatelessWidget {
+class MyInput extends StatefulWidget {
   final String label;
   final String? placeHolder;
+  final String? initialValue;
   final bool line;
+  final Widget? otherWidget;
+  final TextInputType? keyboardType;
+  final ValueChanged? onChanged;
 
   const MyInput({
     required this.label,
     this.placeHolder,
+    this.initialValue,
     this.line = true,
+    this.otherWidget,
+    this.keyboardType,
+    this.onChanged,
     Key? key,
   }) : super(key: key);
 
   @override
+  _MyInputState createState() => _MyInputState();
+}
+
+class _MyInputState extends State<MyInput> {
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    _controller = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    if (widget.initialValue != null) {
+      _controller.text = widget.initialValue!;
+    }
+
     return Column(
       children: [
         Divider(
-          height: line ? 2 : 0,
+          height: widget.line ? 2 : 0,
         ),
         Container(
-          height: 88,
-          padding: EdgeInsets.only(left: 40, right: 20),
+          height: 58,
+          color: Colors.white,
+          padding: EdgeInsets.only(left: 20, right: 10),
           child: Row(
             children: [
               Text(
-                label,
-                style: TextStyle(fontSize: 20),
+                widget.label,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               ),
+              SizedBox(width: 10),
               Expanded(
-                child: TextFormField(
-                  cursorColor: Colors.black,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    hintText: placeHolder,
-                    isCollapsed: true,
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                  ),
-                  onChanged: (String value) {},
-                ),
+                child: widget.otherWidget == null
+                    ? TextFormField(
+                        controller: _controller,
+                        cursorColor: Colors.black,
+                        keyboardType: widget.keyboardType,
+                        decoration: InputDecoration(
+                          hintText: widget.placeHolder,
+                          hintStyle: TextStyle(
+                            fontSize: 14,
+                          ),
+                          isCollapsed: true,
+                          border: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                        ),
+                        onChanged: widget.onChanged,
+                      )
+                    : widget.otherWidget!,
               ),
             ],
           ),
