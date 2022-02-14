@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/common/user_controller.dart';
+import 'package:flutter_app/app/common/views/my_app_bar.dart';
 import 'package:flutter_app/app/common/views/need_login_view.dart';
 import 'package:flutter_app/app/modules/tabs/shopcart/controllers/shopcart_controller.dart';
 import 'package:flutter_app/app/modules/tabs/shopcart/views/cart_empty_view.dart';
@@ -10,9 +11,14 @@ class ShopcartView extends GetView<ShopcartController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: MyAppBar(
         title: Obx(
-          () => Text('购物车 (${controller.totalCount})'),
+          () => Text(
+            '购物车 (${controller.totalCount})',
+            style: TextStyle(
+              color: Colors.black,
+            ),
+          ),
         ),
       ),
       body: Obx(

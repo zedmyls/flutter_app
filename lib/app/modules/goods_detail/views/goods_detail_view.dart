@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/common/utils.dart';
+import 'package:flutter_app/app/common/views/my_app_bar.dart';
 import 'package:flutter_app/app/modules/goods_detail/controllers/goods_detail_controller.dart';
 import 'package:flutter_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
@@ -11,7 +12,7 @@ class GoodsDetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(GoodsDetailController(), tag: Get.arguments.toString());
     return Scaffold(
-      appBar: AppBar(
+      appBar: MyAppBar(
         actions: <Widget>[
           Row(
             children: [
@@ -37,21 +38,10 @@ class GoodsDetailView extends StatelessWidget {
             ],
           )
         ],
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.grey,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
         title: Text(
           "商品详情",
           style: TextStyle(color: Colors.grey.shade800),
         ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
       ),
       body: _buildPageContent(),
     );

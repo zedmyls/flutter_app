@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/common/views/keep_alive_tab_view.dart';
+import 'package:flutter_app/app/common/views/my_app_bar.dart';
 import 'package:flutter_app/app/modules/tabs/home/goodsList/views/goods_list_view.dart';
 import 'package:flutter_app/app/modules/tabs/home/views/home_drawer.dart';
 import 'package:flutter_app/app/modules/tabs/home/views/search_bar_ui.dart';
@@ -11,24 +12,20 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('HomeView'),
-        centerTitle: true,
+      appBar: MyAppBar(
+        title: Text(
+          '主页',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
       ),
       drawer: HomeDrawer(),
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
-            SliverAppBar(
-              pinned: false,
-              expandedHeight: 216,
-              backgroundColor: const Color(0xfff9f9f9),
-              flexibleSpace: Container(
-                height: 200,
-                width: Get.width,
-                color: const Color(0xfff4f4f4),
-                child: SearchBarUI(),
-              ),
+            SliverToBoxAdapter(
+              child: SearchBarUI(),
             ),
             SliverPersistentHeader(
               pinned: true,

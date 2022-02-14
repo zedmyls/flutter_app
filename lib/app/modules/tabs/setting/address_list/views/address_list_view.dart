@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/common/utils.dart';
+import 'package:flutter_app/app/common/views/my_app_bar.dart';
 import 'package:flutter_app/app/common/views/no_data.dart';
 import 'package:flutter_app/app/common/views/tag_view.dart';
 import 'package:flutter_app/app/routes/app_pages.dart';
@@ -13,19 +14,13 @@ class AddressListView extends GetView<AddressListController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.black,
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+      appBar: MyAppBar(
         title: Text(
-          'AddressListView',
+          '地址管理',
           style: TextStyle(
             color: Colors.black,
           ),
         ),
-        centerTitle: true,
       ),
       body: Obx(
         () => controller.list.isNotEmpty
