@@ -9,6 +9,8 @@ import 'package:flutter_app/app/modules/tabs/setting/address_list/address_edit/b
 import 'package:flutter_app/app/modules/tabs/setting/address_list/address_edit/views/address_edit_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/address_list/bindings/address_list_binding.dart';
 import 'package:flutter_app/app/modules/tabs/setting/address_list/views/address_list_view.dart';
+import 'package:flutter_app/app/modules/tabs/setting/star_list/bindings/star_list_binding.dart';
+import 'package:flutter_app/app/modules/tabs/setting/star_list/views/star_list_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/views/setting_view.dart';
 import 'package:flutter_app/app/modules/tabs/shopcart/views/shopcart_view.dart';
 import 'package:flutter_app/app/modules/tabs/views/tabs_view.dart';
@@ -49,6 +51,11 @@ class AppPages {
                   binding: AddressEditBinding(),
                 ),
               ],
+            ),
+            GetPage(
+              name: _Paths.STAR_LIST,
+              page: () => StarListView(),
+              binding: StarListBinding(),
             ),
           ],
         ),

@@ -5,6 +5,7 @@ class MyAppBar extends AppBar {
     Widget? title,
     final List<Widget>? actions,
     Color backgroundColor = Colors.white,
+    PreferredSize? bottom,
   }) : super(
           title: title,
           iconTheme: IconThemeData(
@@ -13,5 +14,6 @@ class MyAppBar extends AppBar {
           backgroundColor: backgroundColor,
           elevation: 4,
           actions: actions,
+          bottom: bottom,
         );
 }

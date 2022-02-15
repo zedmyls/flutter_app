@@ -174,7 +174,14 @@ class ProfileView extends StatelessWidget {
                 buildOption('assets/images/dingdan1.png', "订单", true, onTap: () {
                   print(1);
                 }),
-                buildOption('assets/images/tabs/profile/star.png', "收藏", true),
+                buildOption(
+                  'assets/images/tabs/profile/star.png',
+                  "收藏",
+                  true,
+                  onTap: () {
+                    Get.toNamed(Routes.STAR_LIST);
+                  },
+                ),
               ],
             ),
           ),

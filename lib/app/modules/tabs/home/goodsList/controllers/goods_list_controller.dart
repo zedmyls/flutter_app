@@ -1,19 +1,10 @@
+import 'package:flutter_app/app/common/controllers/get_refresh_controller.dart';
 import 'package:flutter_app/app/common/network/global.dart';
 import 'package:get/get.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../goods_item_model.dart';
 
-class GoodsListController extends GetxController {
-  // 分页
-  int _pageNum = 1;
-  // 后端定死，不用传
-  int get pageSize => 10;
-  // 数据加载完毕否
-  bool noMoreData = false;
-  // 分页controller
-  late final RefreshController refreshController;
-
+class GoodsListController extends GetRefreshController {
   final String type;
   final _goodsList = <dynamic>[].obs;
   List<dynamic> get goodsList => _goodsList;
@@ -24,38 +15,19 @@ class GoodsListController extends GetxController {
     _goodsList.addAll(list);
   }
 
-  // 加载分页
-  refreshData() {
-    if (!noMoreData) {
-      _pageNum++;
-      load();
-    }
-  }
-
   String get url => 'index';
 
+  @override
   load() async {
-    final res = await HttpUtils.instance.get('$url/$type/$_pageNum');
+    final res = await HttpUtils.instance.get('$url/$type/$pageNum');
     final list = res.data.map((item) => GoodsItemModel.fromJson(item)).toList();
     goodsList = list;
-    refreshController.loadComplete();
 
+    // 这里封装的不是很好，不应该暴露出来
+    refreshController.loadComplete();
     if (list.length < pageSize) {
       noMoreData = true;
       refreshController.loadNoData();
     }
-  }
-
-  @override
-  void onInit() {
-    refreshController = RefreshController();
-    load();
-    super.onInit();
-  }
-
-  @override
-  void onClose() {
-    // refreshController.dispose();
-    super.onClose();
   }
 }
