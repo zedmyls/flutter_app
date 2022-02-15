@@ -32,19 +32,19 @@ class ProfileView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      buildOption('assets/images/yonghuguanli.png', '账号管理', false),
-                      buildOption('assets/images/dizhi.png', '地址管理', false, onTap: () {
+                      buildOption('assets/images/tabs/profile/user_setting.png', '账号管理', false),
+                      buildOption('assets/images/tabs/profile/addr.png', '地址管理', false, onTap: () {
                         Get.toNamed(Routes.ADDRESS_LIST);
                       }),
-                      buildOption('assets/images/shezhi.png', '通用设置', false),
+                      buildOption('assets/images/tabs/profile/setting.png', '通用设置', false),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      buildOption('assets/images/guanyuwomen.png', '关于我们', false),
+                      buildOption('assets/images/tabs/profile/about_us.png', '关于我们', false),
                       buildOption('assets/images/daifufeizhangdan.png', 'Daily bonus', false),
-                      buildOption('assets/images/yanjing.png', 'Visitors', false),
+                      buildOption('assets/images/tabs/profile/visitor.png', 'Visitors', false),
                     ],
                   ),
                 ],
@@ -169,12 +169,12 @@ class ProfileView extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                buildOption('assets/images/group.png', "Friends", true),
-                buildOption('assets/images/group.png', "Groups", true),
+                buildOption('assets/images/tabs/profile/group.png', "Friends", true),
+                buildOption('assets/images/tabs/profile/group.png', "Groups", true),
                 buildOption('assets/images/dingdan1.png', "订单", true, onTap: () {
                   print(1);
                 }),
-                buildOption('assets/images/shoucang1.png', "收藏", true),
+                buildOption('assets/images/tabs/profile/star.png', "收藏", true),
               ],
             ),
           ),

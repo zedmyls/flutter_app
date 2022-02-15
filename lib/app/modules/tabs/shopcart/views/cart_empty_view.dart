@@ -10,7 +10,7 @@ class CartEmptyView extends StatelessWidget {
     return Column(
       children: [
         Image(
-          image: AssetImage('assets/images/cart_empty.png'),
+          image: AssetImage('assets/images/tabs/cart/cart_empty.png'),
         ),
         Text(
           '购物车空空如也~~',

@@ -23,7 +23,7 @@ class CartItemView extends StatelessWidget {
           SizedBox(width: 10),
           InkWell(
             child: Image.asset(
-              item.isChecked! ? 'assets/images/checked.png' : 'assets/images/unchecked.png',
+              item.isChecked! ? 'assets/images/icon/checked.png' : 'assets/images/icon/unchecked.png',
               fit: BoxFit.fitWidth,
               width: 25,
             ),

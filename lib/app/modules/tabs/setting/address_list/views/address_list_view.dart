@@ -120,7 +120,7 @@ class AddressListView extends GetView<AddressListController> {
               Get.toNamed(Routes.ADDRESS_EDIT, arguments: item.id!);
             },
             icon: Image(
-              image: AssetImage('assets/images/edit.png'),
+              image: AssetImage('assets/images/icon/edit.png'),
               fit: BoxFit.fitWidth,
               width: 25,
             ),

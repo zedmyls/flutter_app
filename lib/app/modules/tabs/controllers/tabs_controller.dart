@@ -27,7 +27,7 @@ class TabsController extends GetxController with GetIndexListMixin<Widget> {
       BottomNavigationBarItem(
         label: '首页',
         icon: Image(
-          image: AssetImage('assets/images/shouye.png'),
+          image: AssetImage('assets/images/tabs/home.png'),
           fit: BoxFit.fitWidth,
           width: 24,
         ),
@@ -35,7 +35,7 @@ class TabsController extends GetxController with GetIndexListMixin<Widget> {
       BottomNavigationBarItem(
         label: '分类',
         icon: Image(
-          image: AssetImage('assets/images/fenlei.png'),
+          image: AssetImage('assets/images/tabs/category.png'),
           fit: BoxFit.fitWidth,
           width: 24,
         ),
@@ -51,7 +51,7 @@ class TabsController extends GetxController with GetIndexListMixin<Widget> {
               ),
             ),
             child: Image(
-              image: AssetImage('assets/images/gouwuche.png'),
+              image: AssetImage('assets/images/tabs/cart.png'),
               fit: BoxFit.fitWidth,
               width: 24,
             ),
@@ -59,7 +59,7 @@ class TabsController extends GetxController with GetIndexListMixin<Widget> {
           ),
         ),
         activeIcon: Image(
-          image: AssetImage('assets/images/gouwuche.png'),
+          image: AssetImage('assets/images/tabs/cart.png'),
           fit: BoxFit.fitWidth,
           width: 24,
         ),
@@ -67,7 +67,7 @@ class TabsController extends GetxController with GetIndexListMixin<Widget> {
       BottomNavigationBarItem(
         label: '我的',
         icon: Image(
-          image: AssetImage('assets/images/wode.png'),
+          image: AssetImage('assets/images/tabs/profile.png'),
           fit: BoxFit.fitWidth,
           width: 24,
         ),

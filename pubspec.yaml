@@ -26,5 +26,10 @@ dev_dependencies:
 flutter: 
   assets: 
     - assets/images/
+    - assets/images/icon/
+    - assets/images/tabs/
+    - assets/images/tabs/profile/
+    - assets/images/tabs/cart/
+
   uses-material-design: true
 

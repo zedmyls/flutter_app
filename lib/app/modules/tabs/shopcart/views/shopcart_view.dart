@@ -71,7 +71,7 @@ class ShopcartView extends GetView<ShopcartController> {
               children: [
                 InkWell(
                   child: Image.asset(
-                    controller.isCheckedAll ? 'assets/images/checked.png' : 'assets/images/unchecked.png',
+                    controller.isCheckedAll ? 'assets/images/icon/checked.png' : 'assets/images/icon/unchecked.png',
                     fit: BoxFit.fitWidth,
                     width: 25,
                   ),
