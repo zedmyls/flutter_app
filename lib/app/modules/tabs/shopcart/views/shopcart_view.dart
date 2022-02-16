@@ -5,6 +5,7 @@ import 'package:flutter_app/app/common/views/need_login_view.dart';
 import 'package:flutter_app/app/modules/tabs/shopcart/controllers/shopcart_controller.dart';
 import 'package:flutter_app/app/modules/tabs/shopcart/views/cart_empty_view.dart';
 import 'package:flutter_app/app/modules/tabs/shopcart/views/cart_item_view.dart';
+import 'package:flutter_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 class ShopcartView extends GetView<ShopcartController> {
@@ -86,9 +87,11 @@ class ShopcartView extends GetView<ShopcartController> {
                     elevation: 1.0,
                     child: InkWell(
                       splashColor: Colors.redAccent,
-                      onTap: () {
-                        print(controller.goodsIds);
-                      },
+                      onTap: controller.goodsIds.isNotEmpty
+                          ? () {
+                              Get.toNamed(Routes.ORDER_PREVIEW);
+                            }
+                          : null,
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Text(

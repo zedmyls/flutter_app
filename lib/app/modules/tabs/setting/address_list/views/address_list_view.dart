@@ -70,59 +70,66 @@ class AddressListView extends GetView<AddressListController> {
           ),
         ],
       ),
-      child: Container(
-        alignment: Alignment.center,
-        height: 80,
-        child: ListTile(
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                children: [
-                  item.isDefault!
-                      ? Container(
-                          child: TagView(txt: '默认'),
-                          margin: EdgeInsets.only(right: 5),
-                        )
-                      : Container(),
-                  Text(
-                    item.address!.replaceFirst(item.addressDetail!, ''),
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
-              ),
-              Text(
-                item.addressDetail!,
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
-          ),
-          subtitle: Padding(
-            padding: EdgeInsets.only(right: 120),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: GestureDetector(
+        onTap: controller.isSelectMode
+            ? () {
+                Get.back(result: item);
+              }
+            : null,
+        child: Container(
+          alignment: Alignment.center,
+          height: 80,
+          child: ListTile(
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Text(item.name!),
-                Text(item.tel!),
+                Row(
+                  children: [
+                    item.isDefault!
+                        ? Container(
+                            child: TagView(txt: '默认'),
+                            margin: EdgeInsets.only(right: 5),
+                          )
+                        : Container(),
+                    Text(
+                      item.address!.replaceFirst(item.addressDetail!, ''),
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+                Text(
+                  item.addressDetail!,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ],
             ),
-          ),
-          trailing: IconButton(
-            onPressed: () {
-              Get.toNamed(Routes.ADDRESS_EDIT, arguments: item.id!);
-            },
-            icon: Image(
-              image: AssetImage('assets/images/icon/edit.png'),
-              fit: BoxFit.fitWidth,
-              width: 25,
+            subtitle: Padding(
+              padding: EdgeInsets.only(right: 120),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(item.name!),
+                  Text(item.tel!),
+                ],
+              ),
+            ),
+            trailing: IconButton(
+              onPressed: () {
+                Get.toNamed(Routes.ADDRESS_EDIT, arguments: item.id!);
+              },
+              icon: Image(
+                image: AssetImage('assets/images/icon/edit.png'),
+                fit: BoxFit.fitWidth,
+                width: 25,
+              ),
             ),
           ),
         ),

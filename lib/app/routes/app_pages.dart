@@ -9,11 +9,16 @@ import 'package:flutter_app/app/modules/tabs/setting/address_list/address_edit/b
 import 'package:flutter_app/app/modules/tabs/setting/address_list/address_edit/views/address_edit_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/address_list/bindings/address_list_binding.dart';
 import 'package:flutter_app/app/modules/tabs/setting/address_list/views/address_list_view.dart';
+import 'package:flutter_app/app/modules/tabs/setting/order/order_preview/bindings/order_preview_binding.dart';
+import 'package:flutter_app/app/modules/tabs/setting/order/order_preview/views/order_preview_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/star_list/bindings/star_list_binding.dart';
 import 'package:flutter_app/app/modules/tabs/setting/star_list/views/star_list_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/views/setting_view.dart';
 import 'package:flutter_app/app/modules/tabs/shopcart/views/shopcart_view.dart';
 import 'package:flutter_app/app/modules/tabs/views/tabs_view.dart';
+
+import '../modules/tabs/setting/order/order_list/bindings/order_list_binding.dart';
+import '../modules/tabs/setting/order/order_list/views/order_list_view.dart';
 
 part 'app_routes.dart';
 
@@ -56,6 +61,16 @@ class AppPages {
               name: _Paths.STAR_LIST,
               page: () => StarListView(),
               binding: StarListBinding(),
+            ),
+            GetPage(
+              name: _Paths.ORDER_LIST,
+              page: () => OrderListView(),
+              binding: OrderListBinding(),
+            ),
+            GetPage(
+              name: _Paths.ORDER_PREVIEW,
+              page: () => OrderPreviewView(),
+              binding: OrderPreviewBinding(),
             ),
           ],
         ),
