@@ -14,6 +14,8 @@ class HttpUtils {
 
       _dio!.options.baseUrl = 'http://localhost:3000/api/';
       _dio!.options.connectTimeout = 10000;
+      _dio!.options.receiveTimeout = 10000;
+      _dio!.options.sendTimeout = 10000;
 
       final UserController _controller = Get.find();
 

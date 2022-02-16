@@ -17,6 +17,7 @@ abstract class Routes {
   static const STAR_LIST = _Paths.TABS + _Paths.SETTING + _Paths.STAR_LIST;
   static const ORDER_LIST = _Paths.TABS + _Paths.SETTING + _Paths.ORDER_LIST;
   static const ORDER_PREVIEW = _Paths.TABS + _Paths.SETTING + _Paths.ORDER_PREVIEW;
+  static const ORDER_DETAIL = _Paths.TABS + _Paths.SETTING + _Paths.ORDER_DETAIL;
 }
 
 abstract class _Paths {
@@ -33,4 +34,5 @@ abstract class _Paths {
   static const STAR_LIST = '/star-list';
   static const ORDER_LIST = '/order-list';
   static const ORDER_PREVIEW = '/order-preview';
+  static const ORDER_DETAIL = '/order-detail';
 }

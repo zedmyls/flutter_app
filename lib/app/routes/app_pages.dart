@@ -9,6 +9,8 @@ import 'package:flutter_app/app/modules/tabs/setting/address_list/address_edit/b
 import 'package:flutter_app/app/modules/tabs/setting/address_list/address_edit/views/address_edit_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/address_list/bindings/address_list_binding.dart';
 import 'package:flutter_app/app/modules/tabs/setting/address_list/views/address_list_view.dart';
+import 'package:flutter_app/app/modules/tabs/setting/order/order_detail/bindings/order_detail_binding.dart';
+import 'package:flutter_app/app/modules/tabs/setting/order/order_detail/views/order_detail_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/order_preview/bindings/order_preview_binding.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/order_preview/views/order_preview_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/star_list/bindings/star_list_binding.dart';
@@ -71,6 +73,11 @@ class AppPages {
               name: _Paths.ORDER_PREVIEW,
               page: () => OrderPreviewView(),
               binding: OrderPreviewBinding(),
+            ),
+            GetPage(
+              name: _Paths.ORDER_DETAIL,
+              page: () => OrderDetailView(),
+              binding: OrderDetailBinding(),
             ),
           ],
         ),

@@ -82,7 +82,9 @@ class OrderPreviewView extends GetView<OrderPreviewController> {
           ),
           SizedBox(width: 10),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              controller.submit();
+            },
             child: Text('确认订单'),
           )
         ],
