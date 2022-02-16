@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/common/user_controller.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
 class HttpUtils {
@@ -46,6 +47,8 @@ class HttpUtils {
                 colorText: Colors.red,
               );
             }
+            print(EasyLoading.isShow);
+            if (EasyLoading.isShow) EasyLoading.dismiss();
             return;
           },
         ),

@@ -20,11 +20,13 @@ class GoodsDetailView extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 icon: Obx(
                   () => Icon(
-                    controller.detail.collected == 1 ? Icons.favorite : Icons.favorite_border,
-                    color: controller.detail.collected == 1 ? Theme.of(context).colorScheme.secondary : Colors.grey,
+                    controller.isCollected ? Icons.favorite : Icons.favorite_border,
+                    color: controller.isCollected ? Theme.of(context).colorScheme.secondary : Colors.grey,
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  controller.toggleCollectStatus();
+                },
               ),
               Obx(
                 () => Text(

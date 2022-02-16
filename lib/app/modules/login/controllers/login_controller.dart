@@ -11,12 +11,19 @@ class LoginController extends GetxController with GetParamsMixin<LoginRequest> {
   String get url => 'login';
 
   login() async {
-    final res = await HttpUtils.instance.post(url, data: params.toJson());
-    Get.find<UserController>().token = res.data['token'];
-    showSuccessMessage(res.data['message']);
-    Get.find<UserController>().load();
-    Get.find<ShopcartController>().load();
-    Get.offAllNamed(Routes.TABS);
+    loadingToast(
+      () => HttpUtils.instance.post(
+        url,
+        data: params.toJson(),
+      ),
+      successCallback: (res) {
+        Get.find<UserController>().token = res.data['token'];
+        showSuccessMessage(res.data['message']);
+        Get.find<UserController>().load();
+        Get.find<ShopcartController>().load();
+        Get.offAllNamed(Routes.TABS);
+      },
+    );
   }
 
   @override

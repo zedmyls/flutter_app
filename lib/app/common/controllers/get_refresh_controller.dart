@@ -20,6 +20,13 @@ abstract class GetRefreshController extends GetxController {
     }
   }
 
+  // 初始化状态
+  reset() {
+    pageNum = 1;
+    refreshController.refreshToIdle();
+    noMoreData = false;
+  }
+
   load();
 
   @override
