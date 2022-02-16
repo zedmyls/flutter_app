@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/common/views/my_app_bar.dart';
 import 'package:flutter_app/app/modules/tabs/setting/address_list/views/addr_item_view.dart';
+import 'package:flutter_app/app/modules/tabs/setting/order/order_goods_item_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/order_preview/controllers/order_preview_controller.dart';
-import 'package:flutter_app/app/modules/tabs/shopcart/cart_item_model.dart';
 import 'package:get/get.dart';
 
 class OrderPreviewView extends GetView<OrderPreviewController> {
@@ -46,7 +46,7 @@ class OrderPreviewView extends GetView<OrderPreviewController> {
               () => ListView.builder(
                 shrinkWrap: true,
                 itemBuilder: (ctx, index) {
-                  return _checkOutItem(controller.cartList[index]);
+                  return OrderGoodsItemView(controller.cartList[index]);
                 },
                 itemCount: controller.cartList.length,
               ),
@@ -87,51 +87,6 @@ class OrderPreviewView extends GetView<OrderPreviewController> {
             },
             child: Text('确认订单'),
           )
-        ],
-      ),
-    );
-  }
-
-  Widget _checkOutItem(CartItemModel item) {
-    return Container(
-      padding: EdgeInsets.only(bottom: 10),
-      child: Row(
-        children: <Widget>[
-          Container(
-            width: 100,
-            child: Image.network(
-              item.goodsId!.coverUrl!,
-              fit: BoxFit.fitWidth,
-            ),
-          ),
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.fromLTRB(10, 10, 10, 5),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(item.goodsId!.title!, maxLines: 2),
-                  // Text("白色,175", maxLines: 1),
-                  Stack(
-                    children: <Widget>[
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "￥${item.goodsId!.price!}",
-                          style: TextStyle(color: Colors.red),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Text('x${item.num!}'),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ),
         ],
       ),
     );
