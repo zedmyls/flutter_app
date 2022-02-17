@@ -3,8 +3,6 @@ import 'package:flutter_app/app/common/utils.dart';
 import 'package:flutter_app/app/modules/tabs/setting/address_list/addr_model.dart';
 import 'package:get/get.dart';
 
-import '../../order/order_preview/controllers/order_preview_controller.dart';
-
 class AddressListController extends GetxController {
   String get url => 'addr';
 
@@ -26,7 +24,7 @@ class AddressListController extends GetxController {
 
   @override
   void onInit() {
-    if (Get.isRegistered<OrderPreviewController>()) {
+    if (Get.arguments != null && Get.arguments == 'select') {
       isSelectMode = true;
     }
 

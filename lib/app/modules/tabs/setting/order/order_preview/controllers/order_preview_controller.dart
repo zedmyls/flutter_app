@@ -44,7 +44,7 @@ class OrderPreviewController extends GetxController {
 
   // 跳转到地址列表，返回选中的AddrModel
   selectAddr() async {
-    final result = await Get.toNamed(Routes.ADDRESS_LIST);
+    final result = await Get.toNamed(Routes.ADDRESS_LIST, arguments: 'select');
     if (result != null) _defaultAddr.value = result;
   }
 

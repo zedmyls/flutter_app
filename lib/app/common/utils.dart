@@ -55,6 +55,7 @@ loadingToast(Future Function() request, {Function(dio.Response res)? successCall
 confirmDialog({
   required String title,
   required String msg,
+  Widget? content,
   VoidCallback? onCancel,
   VoidCallback? onConfirm,
 }) {
@@ -97,6 +98,12 @@ confirmDialog({
     ],
     title: title,
     titleStyle: TextStyle(color: Colors.red),
-    content: Text(msg),
+    content: Column(
+      children: [
+        Text(msg),
+        SizedBox(height: 10),
+        content ?? Container(),
+      ],
+    ),
   );
 }

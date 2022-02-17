@@ -5,7 +5,7 @@ import '../addr_model.dart';
 
 class AddrItemView extends StatelessWidget {
   final AddrModel item;
-  final VoidCallback? onTap;
+  final VoidCallback? onTap; // onTap如果为空，则不显示选择图标
   const AddrItemView(
     this.item, {
     Key? key,
@@ -61,11 +61,13 @@ class AddrItemView extends StatelessWidget {
               ],
             ),
           ),
-          trailing: Icon(
-            Icons.keyboard_arrow_right,
-            color: Colors.black,
-            size: 30,
-          ),
+          trailing: onTap != null
+              ? Icon(
+                  Icons.keyboard_arrow_right,
+                  color: Colors.black,
+                  size: 30,
+                )
+              : null,
         ),
       ),
     );

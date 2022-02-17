@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/modules/tabs/setting/order/enum/order_status.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/order_detail/controllers/order_detail_controller.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/order_goods_item_view.dart';
 import 'package:get/get.dart';
@@ -11,18 +12,21 @@ class OrderDetailView extends GetView<OrderDetailController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        title: Text(
-          '订单详情',
-          style: TextStyle(
-            color: Colors.black,
+        title: Obx(
+          () => Text(
+            OrderStatus.values[controller.order.status! - 1].value,
+            style: TextStyle(
+              color: Colors.black,
+            ),
           ),
         ),
       ),
       body: Container(
-        child: ListView(
+        child: Column(
           children: <Widget>[
             Obx(
               () => Container(
+                color: Colors.white,
                 padding: EdgeInsets.symmetric(vertical: 10),
                 child: AddrItemView(controller.addr),
               ),
@@ -35,10 +39,10 @@ class OrderDetailView extends GetView<OrderDetailController> {
                   shrinkWrap: true,
                   itemBuilder: (ctx, index) {
                     return OrderGoodsItemView(
-                      controller.cartList[index],
+                      controller.order.orderDetail!.goodsList![index],
                     );
                   },
-                  itemCount: controller.cartList.length,
+                  itemCount: controller.order.orderDetail!.goodsList!.length,
                 ),
               ),
             ),
@@ -51,12 +55,12 @@ class OrderDetailView extends GetView<OrderDetailController> {
                     title: Row(
                       children: <Widget>[
                         Text(
-                          "订单编号:",
+                          "订单编号：",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text("124215215xx324")
+                        Obx(() => Text(controller.order.orderNo!)),
                       ],
                     ),
                   ),
@@ -64,12 +68,12 @@ class OrderDetailView extends GetView<OrderDetailController> {
                     title: Row(
                       children: <Widget>[
                         Text(
-                          "下单日期:",
+                          "下单日期：",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text("2019-12-09")
+                        Obx(() => Text(controller.order.createAt!)),
                       ],
                     ),
                   ),
@@ -77,7 +81,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
                     title: Row(
                       children: <Widget>[
                         Text(
-                          "支付方式:",
+                          "支付方式：",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -90,12 +94,12 @@ class OrderDetailView extends GetView<OrderDetailController> {
                     title: Row(
                       children: <Widget>[
                         Text(
-                          "配送方式:",
+                          "配送方式：",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text("顺丰"),
+                        Obx(() => Text(controller.order.expressType!)),
                       ],
                     ),
                   )
@@ -105,6 +109,94 @@ class OrderDetailView extends GetView<OrderDetailController> {
           ],
         ),
       ),
+      floatingActionButton: Obx(
+        () => _buildBottomActions(),
+      ),
     );
+  }
+
+  // 删除按钮
+  Widget _buildDelButton() {
+    return ElevatedButton(
+      onPressed: () {
+        controller.deleteOrder();
+      },
+      child: Text('删除订单'),
+    );
+  }
+
+  // 修改地址按钮
+  Widget _buildAddrButton() {
+    return ElevatedButton(
+      onPressed: () {
+        controller.selectAddr();
+      },
+      child: Text('修改地址'),
+    );
+  }
+
+  Widget _buildBottomActions() {
+    int status = controller.order.status!;
+
+    if (status == OrderStatus.waitingPay.status) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          _buildDelButton(),
+          SizedBox(width: 10),
+          _buildAddrButton(),
+          SizedBox(width: 10),
+          ElevatedButton(
+            onPressed: () {},
+            child: Text('付款'),
+          ),
+        ],
+      );
+    } else if (status == OrderStatus.waitingSend.status) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          _buildAddrButton(),
+          SizedBox(width: 10),
+          ElevatedButton(
+            onPressed: () {
+              controller.remindDelivery();
+            },
+            child: Text('提醒发货'),
+          ),
+        ],
+      );
+    } else if (status == OrderStatus.waitingReceive.status) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              // 有确认弹窗
+            },
+            child: Text('确认收货'),
+          ),
+        ],
+      );
+    } else if (status == OrderStatus.completed.status) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          ElevatedButton(
+            onPressed: () {},
+            child: Text('再次购买'),
+          ),
+          SizedBox(width: 10),
+          _buildDelButton(),
+          SizedBox(width: 10),
+          ElevatedButton(
+            onPressed: () {},
+            child: Text('去评价'),
+          ),
+        ],
+      );
+    } else if (status == OrderStatus.close.status) {}
+
+    return Container();
   }
 }
