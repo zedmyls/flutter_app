@@ -47,19 +47,20 @@ class AddressEditView extends GetView<AddressEditController> {
               otherWidget: GestureDetector(
                 child: Obx(
                   () => Text(
-                    controller.params.address ?? '省市县，点击选择',
+                    controller.params.address.isNotEmpty ? controller.params.address : '省市县，点击选择',
                     style: TextStyle(
-                      color: controller.params.address != null ? Colors.black : Colors.grey,
+                      color: controller.params.address.isNotEmpty ? Colors.black : Colors.grey,
                     ),
                   ),
                 ),
                 onTap: () async {
                   final addr = await CityPickers.showCityPicker(
-                      context: context, locationCode: controller.params.areaCode ?? '110000');
+                      context: context,
+                      locationCode: controller.params.areaCode.isNotEmpty ? controller.params.areaCode : '110000');
 
                   if (addr != null) {
                     controller.obsParams.update((val) {
-                      val!.areaCode = addr.areaId;
+                      val!.areaCode = addr.areaId!;
                       val.address = '${addr.provinceName}${addr.cityName}${addr.areaName}';
                     });
                   }

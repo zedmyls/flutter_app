@@ -1,10 +1,10 @@
 class AddrModel {
   String? name;
   String? tel;
-  String? areaCode;
+  late String areaCode;
   bool? isDefault;
   String? addressDetail;
-  String? address;
+  late String address;
   String? userId;
   int? id;
   String? createAt;
