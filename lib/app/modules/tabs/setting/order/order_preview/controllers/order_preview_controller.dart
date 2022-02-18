@@ -45,7 +45,10 @@ class OrderPreviewController extends GetxController {
   // 跳转到地址列表，返回选中的AddrModel
   selectAddr() async {
     final result = await Get.toNamed(Routes.ADDRESS_LIST, arguments: 'select');
-    if (result != null) _defaultAddr.value = result;
+    if (result != null) {
+      _hasDefaultAddr.value = true;
+      _defaultAddr.value = result;
+    }
   }
 
   // 确认订单

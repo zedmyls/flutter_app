@@ -3,6 +3,7 @@ import 'package:flutter_app/app/common/network/global.dart';
 import 'package:flutter_app/app/common/utils.dart';
 import 'package:flutter_app/app/modules/tabs/setting/address_list/addr_model.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/models/order_model.dart';
+import 'package:flutter_app/app/modules/tabs/shopcart/controllers/shopcart_controller.dart';
 import 'package:flutter_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
@@ -50,7 +51,18 @@ class OrderDetailController extends GetxController {
     confirmDialog(
       title: '删除',
       msg: '您确定要删除该订单吗？',
-      onConfirm: () {},
+      onConfirm: () {
+        loadingToast(
+          () => HttpUtils.instance.delete(
+            '$url/${order.id}/${checked.value ? 1 : 0}',
+          ),
+          successCallback: (res) {
+            Get.back();
+            showSuccessMessage(res.data['message']);
+            if (checked.value) Get.find<ShopcartController>().load();
+          },
+        );
+      },
       content: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

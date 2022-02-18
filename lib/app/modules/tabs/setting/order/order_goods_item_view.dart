@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../common/constant.dart';
 import '../../shopcart/cart_item_model.dart';
 
 class OrderGoodsItemView extends StatelessWidget {
@@ -16,7 +17,7 @@ class OrderGoodsItemView extends StatelessWidget {
           Container(
             width: 100,
             child: Image.network(
-              item.goodsId!.coverUrl!,
+              item.goodsId != null ? item.goodsId!.coverUrl! : defaultNetworkImg,
               fit: BoxFit.fitWidth,
             ),
           ),
@@ -27,14 +28,13 @@ class OrderGoodsItemView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(item.goodsId!.title!, maxLines: 2),
-                  // Text("白色,175", maxLines: 1),
+                  Text(item.goodsId != null ? item.goodsId!.title! : '', maxLines: 2),
                   Stack(
                     children: <Widget>[
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          "￥${item.goodsId!.price!}",
+                          "￥${item.goodsId != null ? item.goodsId!.price! : 0}",
                           style: TextStyle(color: Colors.red),
                         ),
                       ),

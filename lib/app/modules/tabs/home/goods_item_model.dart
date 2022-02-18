@@ -10,15 +10,15 @@ class GoodsItemModel {
   String? id_;
 
   GoodsItemModel({
-    this.category,
-    this.collected,
-    this.comeOutTime,
-    this.coverUrl,
-    this.id,
-    this.price,
-    this.sales,
-    this.title,
-    this.id_,
+    this.category = '',
+    this.collected = -1,
+    this.comeOutTime = '',
+    this.coverUrl = '',
+    this.id = -1,
+    this.price = -1,
+    this.sales = -1,
+    this.title = '',
+    this.id_ = '',
   });
 
   GoodsItemModel.fromJson(Map<String, dynamic> json) {

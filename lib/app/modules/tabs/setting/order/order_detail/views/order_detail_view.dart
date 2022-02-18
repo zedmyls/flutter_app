@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/enum/order_status.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/order_detail/controllers/order_detail_controller.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/order_goods_item_view.dart';
+import 'package:flutter_app/app/modules/tabs/shopcart/cart_item_model.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../common/views/my_app_bar.dart';
@@ -14,7 +15,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
       appBar: MyAppBar(
         title: Obx(
           () => Text(
-            OrderStatus.values[controller.order.status! - 1].value,
+            controller.order.status != null ? OrderStatus.values[controller.order.status! - 1].value : '',
             style: TextStyle(
               color: Colors.black,
             ),
@@ -39,10 +40,10 @@ class OrderDetailView extends GetView<OrderDetailController> {
                   shrinkWrap: true,
                   itemBuilder: (ctx, index) {
                     return OrderGoodsItemView(
-                      controller.order.orderDetail!.goodsList![index],
+                      controller.order.orderDetail?.goodsList![index] ?? CartItemModel(),
                     );
                   },
-                  itemCount: controller.order.orderDetail!.goodsList!.length,
+                  itemCount: controller.order.orderDetail?.goodsList!.length,
                 ),
               ),
             ),
@@ -60,7 +61,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Obx(() => Text(controller.order.orderNo!)),
+                        Obx(() => Text(controller.order.orderNo ?? '')),
                       ],
                     ),
                   ),
@@ -73,7 +74,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Obx(() => Text(controller.order.createAt!)),
+                        Obx(() => Text(controller.order.createAt ?? '')),
                       ],
                     ),
                   ),
@@ -99,7 +100,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Obx(() => Text(controller.order.expressType!)),
+                        Obx(() => Text(controller.order.expressType ?? '')),
                       ],
                     ),
                   )
@@ -136,7 +137,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
   }
 
   Widget _buildBottomActions() {
-    int status = controller.order.status!;
+    int status = controller.order.status ?? 0;
 
     if (status == OrderStatus.waitingPay.status) {
       return Row(

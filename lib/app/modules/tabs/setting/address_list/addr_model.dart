@@ -11,16 +11,16 @@ class AddrModel {
   String? updateAt;
 
   AddrModel(
-      {this.name,
-      this.tel,
-      this.areaCode,
-      this.isDefault,
-      this.addressDetail,
-      this.address,
-      this.userId,
-      this.id,
-      this.createAt,
-      this.updateAt});
+      {this.name = '',
+      this.tel = '',
+      this.areaCode = '',
+      this.isDefault = false,
+      this.addressDetail = '',
+      this.address = '',
+      this.userId = '',
+      this.id = -1,
+      this.createAt = '',
+      this.updateAt = ''});
 
   AddrModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];

@@ -16,10 +16,10 @@ class RegisterController extends LoginController {
       showErrorMessage('邮箱不能为空');
     } else if (params.password.isEmpty) {
       showErrorMessage('密码不能为空');
-    } else if (confirmPwd.value == params.password) {
-      login();
-    } else {
+    } else if (confirmPwd.value != params.password) {
       showErrorMessage('两次密码需输入一致');
+    } else {
+      login();
     }
   }
 

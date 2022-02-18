@@ -36,6 +36,9 @@ class OrderPreviewView extends GetView<OrderPreviewController> {
                       leading: Icon(Icons.add_location),
                       title: Text("请添加收货地址"),
                       trailing: Icon(Icons.navigate_next),
+                      onTap: () {
+                        controller.selectAddr();
+                      },
                     ),
             ),
           ),

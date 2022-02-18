@@ -5,7 +5,7 @@ class CartItemModel {
   int? num;
   bool? isChecked;
 
-  CartItemModel({this.goodsId, this.num, this.isChecked});
+  CartItemModel({this.goodsId, this.num = -1, this.isChecked = false});
 
   CartItemModel.fromJson(Map<String, dynamic> json) {
     goodsId = json['goods_id'] != null ? GoodsItemModel.fromJson(json['goods_id']) : null;

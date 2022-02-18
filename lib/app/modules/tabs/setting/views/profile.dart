@@ -146,7 +146,7 @@ class ProfileView extends StatelessWidget {
             alignment: Alignment.center,
             padding: EdgeInsets.all(16.0),
             child: Text(
-              _controller.user.nickname!,
+              _controller.user.nickname ?? '',
               style: TextStyle(
                 fontSize: 25.0,
                 color: Colors.white,
