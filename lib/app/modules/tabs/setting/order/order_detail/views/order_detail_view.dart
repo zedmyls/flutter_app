@@ -15,7 +15,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
       appBar: MyAppBar(
         title: Obx(
           () => Text(
-            OrderStatus.values[controller.status].value,
+            OrderStatus.values[controller.status - 1].value,
             style: TextStyle(
               color: Colors.black,
             ),
@@ -175,7 +175,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
         children: [
           ElevatedButton(
             onPressed: () {
-              // 有确认弹窗
+              controller.receive();
             },
             child: Text('确认收货'),
           ),

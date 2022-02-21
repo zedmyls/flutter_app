@@ -13,7 +13,7 @@ import 'package:get/get.dart';
 class OrderDetailController extends GetxController {
   final _order = OrderModel().obs;
   final _addr = AddrModel().obs;
-  final _status = 0.obs;
+  final _status = 1.obs;
   final checked = false.obs;
 
   OrderModel get order => _order.value;
@@ -25,7 +25,7 @@ class OrderDetailController extends GetxController {
     loadingToast(() => HttpUtils.instance.get('$url/${Get.arguments}'), successCallback: (res) {
       _order.value = OrderModel.fromJson(res.data['order']);
       _addr.value = _order.value.addressId!;
-      _status.value = _order.value.status ?? 0;
+      _status.value = _order.value.status ?? 1;
     });
   }
 
@@ -53,7 +53,8 @@ class OrderDetailController extends GetxController {
   }
 
   // 删除订单
-  deleteOrder() {
+  deleteOrder({bool isShowRollback = true}) {
+    if (!isShowRollback) checked.value = false;
     confirmDialog(
       title: '删除',
       msg: '您确定要删除该订单吗？',
@@ -69,26 +70,28 @@ class OrderDetailController extends GetxController {
           },
         );
       },
-      content: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Obx(
-            () => Checkbox(
-              value: checked.value,
-              onChanged: (flag) {
-                checked.value = flag!;
-              },
-            ),
-          ),
-          Text(
-            '包含的商品放回购物车',
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 14,
-            ),
-          ),
-        ],
-      ),
+      content: isShowRollback
+          ? Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Obx(
+                  () => Checkbox(
+                    value: checked.value,
+                    onChanged: (flag) {
+                      checked.value = flag!;
+                    },
+                  ),
+                ),
+                Text(
+                  '包含的商品放回购物车',
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 14,
+                  ),
+                ),
+              ],
+            )
+          : Container(),
     );
   }
 
@@ -107,6 +110,22 @@ class OrderDetailController extends GetxController {
         EasyLoading.showSuccess(res.data['message']);
         _status.value = OrderStatus.waitingSend.status;
         Get.back();
+      },
+    );
+  }
+
+  // 确认收货
+  receive() {
+    confirmDialog(
+      title: '确认收货',
+      msg: '请确保您已经收到商品，且确认无误',
+      onConfirm: () {
+        loadingToast(
+          () => HttpUtils.instance.patch('$url/${order.id}'),
+          successCallback: (res) {
+            _status.value = OrderStatus.completed.status;
+          },
+        );
       },
     );
   }
