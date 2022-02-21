@@ -65,6 +65,8 @@ class OrderDetailController extends GetxController {
             '$url/${order.id}/${checked.value ? 1 : 0}',
           ),
           successCallback: (res) {
+            // 刷新 全部，订单所属分类 列表
+            _refreshOrderList([0, order.status!]);
             Get.back();
             showSuccessMessage(res.data['message']);
             if (checked.value) Get.find<ShopcartController>().load();
@@ -108,12 +110,8 @@ class OrderDetailController extends GetxController {
         data: {'order_id': order.id},
       ),
       successCallback: (res) {
-        for (var value in [0, 1, 2, 3, 4]) {
-          if (Get.isRegistered<OrderTabViewController>(tag: value.toString())) {
-            Get.find<OrderTabViewController>(tag: value.toString()).refreshList();
-          }
-        }
-
+        // 刷新 全部，待付款，待发货 列表
+        _refreshOrderList([0, 1, 2]);
         EasyLoading.showSuccess(res.data['message']);
         _status.value = OrderStatus.waitingSend.status;
         Get.back();
@@ -130,11 +128,22 @@ class OrderDetailController extends GetxController {
         loadingToast(
           () => HttpUtils.instance.patch('$url/${order.id}'),
           successCallback: (res) {
+            // 刷新 全部，待收货，交易完成 列表
+            _refreshOrderList([0, 3, 4]);
             _status.value = OrderStatus.completed.status;
           },
         );
       },
     );
+  }
+
+  // 如果是从订单列表页进来的，则操作后会刷新列表
+  _refreshOrderList(List<int> tags) {
+    for (var value in tags) {
+      if (Get.isRegistered<OrderTabViewController>(tag: value.toString())) {
+        Get.find<OrderTabViewController>(tag: value.toString()).refreshList();
+      }
+    }
   }
 
   @override

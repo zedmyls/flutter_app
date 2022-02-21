@@ -10,7 +10,7 @@ class OrderListController extends GetxController with GetTickerProviderStateMixi
 
   @override
   void onInit() {
-    tabs.add(OptionModel(key: 'default', value: '0'));
+    tabs.add(OptionModel(key: '全部', value: '0'));
     for (var element in OrderStatus.values.sublist(0, 4)) {
       tabs.add(
         OptionModel(

@@ -85,15 +85,23 @@ class OrderListView extends GetView<OrderListController> {
                         borderRadius: BorderRadius.all(Radius.circular(30)),
                         child: TabBar(
                           controller: controller.tabController,
+                          indicatorSize: TabBarIndicatorSize.tab,
+                          labelColor: Colors.white,
+                          unselectedLabelColor: const Color(0xffEC751C),
+                          labelPadding: const EdgeInsets.all(0),
+                          indicator: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            gradient: const LinearGradient(
+                              colors: <Color>[
+                                Color(0xffFDA149),
+                                Color(0xffFF4352),
+                              ],
+                            ),
+                          ),
                           tabs: controller.tabs
                               .map(
                                 (e) => Tab(
-                                  child: Text(
-                                    e.key!,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                    ),
-                                  ),
+                                  child: Text(e.key!),
                                 ),
                               )
                               .toList(),
