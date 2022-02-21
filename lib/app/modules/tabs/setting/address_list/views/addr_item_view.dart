@@ -33,7 +33,7 @@ class AddrItemView extends StatelessWidget {
                         )
                       : Container(),
                   Text(
-                    item.address!.replaceFirst(item.addressDetail!, ''),
+                    item.address.replaceFirst(item.addressDetail!, ''),
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 13,

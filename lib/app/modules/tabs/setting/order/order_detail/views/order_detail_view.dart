@@ -15,7 +15,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
       appBar: MyAppBar(
         title: Obx(
           () => Text(
-            controller.order.status != null ? OrderStatus.values[controller.order.status! - 1].value : '',
+            OrderStatus.values[controller.status].value,
             style: TextStyle(
               color: Colors.black,
             ),
@@ -137,7 +137,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
   }
 
   Widget _buildBottomActions() {
-    int status = controller.order.status ?? 0;
+    int status = controller.status;
 
     if (status == OrderStatus.waitingPay.status) {
       return Row(
@@ -148,7 +148,9 @@ class OrderDetailView extends GetView<OrderDetailController> {
           _buildAddrButton(),
           SizedBox(width: 10),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              controller.pay();
+            },
             child: Text('付款'),
           ),
         ],
