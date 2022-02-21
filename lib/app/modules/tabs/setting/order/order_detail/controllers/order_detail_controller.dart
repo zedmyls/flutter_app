@@ -5,6 +5,7 @@ import 'package:flutter_app/app/modules/tabs/setting/address_list/addr_model.dar
 import 'package:flutter_app/app/modules/tabs/setting/order/enum/order_status.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/models/order_model.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/order_detail/views/payment_bottom_sheet.dart';
+import 'package:flutter_app/app/modules/tabs/setting/order/order_list/controllers/order_tab_view_controller.dart';
 import 'package:flutter_app/app/modules/tabs/shopcart/controllers/shopcart_controller.dart';
 import 'package:flutter_app/app/routes/app_pages.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -107,6 +108,12 @@ class OrderDetailController extends GetxController {
         data: {'order_id': order.id},
       ),
       successCallback: (res) {
+        for (var value in [0, 1, 2, 3, 4]) {
+          if (Get.isRegistered<OrderTabViewController>(tag: value.toString())) {
+            Get.find<OrderTabViewController>(tag: value.toString()).refreshList();
+          }
+        }
+
         EasyLoading.showSuccess(res.data['message']);
         _status.value = OrderStatus.waitingSend.status;
         Get.back();

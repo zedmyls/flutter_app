@@ -172,7 +172,7 @@ class ProfileView extends StatelessWidget {
                 buildOption('assets/images/tabs/profile/group.png', "Friends", true),
                 buildOption('assets/images/tabs/profile/group.png', "Groups", true),
                 buildOption('assets/images/dingdan1.png', "订单", true, onTap: () {
-                  print(1);
+                  Get.toNamed(Routes.ORDER_LIST);
                 }),
                 buildOption(
                   'assets/images/tabs/profile/star.png',

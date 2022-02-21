@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/routes/app_pages.dart';
+import 'package:get/get.dart';
 
 import '../../../../common/constant.dart';
 import '../../shopcart/cart_item_model.dart';
 
 class OrderGoodsItemView extends StatelessWidget {
+  final double height;
   final CartItemModel item;
 
-  const OrderGoodsItemView(this.item, {Key? key}) : super(key: key);
+  const OrderGoodsItemView(this.item, {Key? key, this.height = 100}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +17,16 @@ class OrderGoodsItemView extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 10),
       child: Row(
         children: <Widget>[
-          Container(
-            width: 100,
-            child: Image.network(
-              item.goodsId != null ? item.goodsId!.coverUrl! : defaultNetworkImg,
-              fit: BoxFit.fitWidth,
+          GestureDetector(
+            onTap: () {
+              Get.toNamed(Routes.GOODS_DETAIL, arguments: item.goodsId!.id);
+            },
+            child: Container(
+              width: height,
+              child: Image.network(
+                item.goodsId != null ? item.goodsId!.coverUrl! : defaultNetworkImg,
+                fit: BoxFit.fitWidth,
+              ),
             ),
           ),
           Expanded(
