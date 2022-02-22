@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/common/utils.dart';
 import 'package:flutter_app/app/common/views/my_app_bar.dart';
+import 'package:flutter_app/app/common/views/my_buttons.dart';
 import 'package:flutter_app/app/common/views/no_data.dart';
 import 'package:flutter_app/app/common/views/tag_view.dart';
 import 'package:flutter_app/app/routes/app_pages.dart';
@@ -32,8 +33,9 @@ class AddressListView extends GetView<AddressListController> {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
           height: 44,
-          child: ElevatedButton(
-            child: Text('新增地址'),
+          child: GradientButton(
+            title: '新增地址',
+            type: ButtonType.info,
             onPressed: () {
               Get.toNamed(Routes.ADDRESS_EDIT);
             },

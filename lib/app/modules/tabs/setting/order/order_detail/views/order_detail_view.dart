@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/common/views/my_buttons.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/enum/order_status.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/order_detail/controllers/order_detail_controller.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/order_goods_item_view.dart';
@@ -119,21 +120,23 @@ class OrderDetailView extends GetView<OrderDetailController> {
 
   // 删除按钮
   Widget _buildDelButton() {
-    return ElevatedButton(
+    return LineButton(
+      type: ButtonType.danger,
+      title: '删除订单',
       onPressed: () {
         controller.deleteOrder();
       },
-      child: Text('删除订单'),
     );
   }
 
   // 修改地址按钮
   Widget _buildAddrButton() {
-    return ElevatedButton(
+    return LineButton(
+      type: ButtonType.info,
       onPressed: () {
         controller.selectAddr();
       },
-      child: Text('修改地址'),
+      title: '修改地址',
     );
   }
 
@@ -148,11 +151,12 @@ class OrderDetailView extends GetView<OrderDetailController> {
           SizedBox(width: 10),
           _buildAddrButton(),
           SizedBox(width: 10),
-          ElevatedButton(
+          LineButton(
+            type: ButtonType.info,
             onPressed: () {
               controller.pay();
             },
-            child: Text('付款'),
+            title: '付款',
           ),
         ],
       );
@@ -162,11 +166,12 @@ class OrderDetailView extends GetView<OrderDetailController> {
         children: [
           _buildAddrButton(),
           SizedBox(width: 10),
-          ElevatedButton(
+          LineButton(
+            type: ButtonType.info,
             onPressed: () {
               controller.remindDelivery();
             },
-            child: Text('提醒发货'),
+            title: '提醒发货',
           ),
         ],
       );
@@ -174,11 +179,12 @@ class OrderDetailView extends GetView<OrderDetailController> {
       return Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          ElevatedButton(
+          LineButton(
+            type: ButtonType.danger,
             onPressed: () {
               controller.receive();
             },
-            child: Text('确认收货'),
+            title: '确认收货',
           ),
         ],
       );
@@ -186,16 +192,18 @@ class OrderDetailView extends GetView<OrderDetailController> {
       return Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          ElevatedButton(
-            onPressed: () {},
-            child: Text('再次购买'),
-          ),
-          SizedBox(width: 10),
           _buildDelButton(),
           SizedBox(width: 10),
-          ElevatedButton(
+          LineButton(
+            type: ButtonType.success,
             onPressed: () {},
-            child: Text('去评价'),
+            title: '再次购买',
+          ),
+          SizedBox(width: 10),
+          LineButton(
+            type: ButtonType.info,
+            onPressed: () {},
+            title: '去评价',
           ),
         ],
       );

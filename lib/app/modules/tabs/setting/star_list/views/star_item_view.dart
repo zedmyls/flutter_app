@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/common/views/MoneyView.dart';
+import 'package:flutter_app/app/common/views/my_buttons.dart';
 import 'package:flutter_app/app/modules/tabs/home/goods_item_model.dart';
 import 'package:flutter_app/app/modules/tabs/setting/star_list/controllers/star_list_controller.dart';
 import 'package:flutter_app/app/routes/app_pages.dart';
@@ -134,15 +135,18 @@ class StarItemView extends StatelessWidget {
                   // ),
                   Row(
                     children: [
-                      ElevatedButton(
+                      GradientButton(
+                        title: '看相似',
+                        type: ButtonType.info,
                         onPressed: () {},
-                        child: Text('看相似'),
                       ),
-                      ElevatedButton(
+                      SizedBox(width: 3),
+                      GradientButton(
+                        title: '降价通知',
+                        type: ButtonType.warning,
                         onPressed: () {
                           _controller.priceReduce();
                         },
-                        child: Text('降价通知'),
                       ),
                       IconButton(
                         onPressed: () {

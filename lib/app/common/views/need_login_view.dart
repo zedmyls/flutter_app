@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/common/views/my_buttons.dart';
 import 'package:flutter_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
@@ -19,12 +20,16 @@ class NeedLoginView extends StatelessWidget {
             fontSize: 14,
           ),
         ),
-        SizedBox(width: 20),
-        ElevatedButton(
-          onPressed: () {
-            Get.toNamed(Routes.LOGIN, arguments: 0);
-          },
-          child: Text('去登录'),
+        SizedBox(height: 10),
+        Container(
+          width: 100,
+          child: GradientButton(
+            type: ButtonType.info,
+            onPressed: () {
+              Get.toNamed(Routes.LOGIN, arguments: 0);
+            },
+            title: '去登录',
+          ),
         ),
       ],
     );

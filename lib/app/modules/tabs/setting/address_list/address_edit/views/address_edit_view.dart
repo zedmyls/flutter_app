@@ -2,6 +2,7 @@ import 'package:city_pickers/city_pickers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/common/my_input.dart';
 import 'package:flutter_app/app/common/views/my_app_bar.dart';
+import 'package:flutter_app/app/common/views/my_buttons.dart';
 import 'package:get/get.dart';
 
 import '../controllers/address_edit_controller.dart';
@@ -93,11 +94,16 @@ class AddressEditView extends GetView<AddressEditController> {
               ),
             ),
             SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                controller.submit();
-              },
-              child: Text('保存'),
+            Container(
+              width: 200,
+              height: 40,
+              child: GradientButton(
+                onPressed: () {
+                  controller.submit();
+                },
+                title: '保存',
+                type: ButtonType.info,
+              ),
             ),
           ],
         ),

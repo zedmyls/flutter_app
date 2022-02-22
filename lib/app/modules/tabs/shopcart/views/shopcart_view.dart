@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/common/user_controller.dart';
 import 'package:flutter_app/app/common/views/my_app_bar.dart';
+import 'package:flutter_app/app/common/views/my_buttons.dart';
 import 'package:flutter_app/app/common/views/need_login_view.dart';
 import 'package:flutter_app/app/modules/tabs/shopcart/controllers/shopcart_controller.dart';
 import 'package:flutter_app/app/modules/tabs/shopcart/views/cart_empty_view.dart';
@@ -90,22 +91,19 @@ class ShopcartView extends GetView<ShopcartController> {
                 SizedBox(width: 10),
                 Expanded(
                   child: Material(
-                    color: Colors.red,
-                    elevation: 1.0,
-                    child: InkWell(
-                      splashColor: Colors.redAccent,
-                      onTap: controller.goodsIds.isNotEmpty
-                          ? () {
-                              Get.toNamed(Routes.ORDER_PREVIEW);
-                            }
-                          : null,
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text(
-                          "结算",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
+                    color: Colors.transparent,
+                    child: Container(
+                      height: 44,
+                      child: GradientButton(
+                        type: ButtonType.danger,
+                        title: '结算',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        onPressed: controller.goodsIds.isNotEmpty
+                            ? () {
+                                Get.toNamed(Routes.ORDER_PREVIEW);
+                              }
+                            : null,
                       ),
                     ),
                   ),

@@ -66,13 +66,11 @@ class _MyInputState extends State<MyInput> {
                 child: widget.otherWidget == null
                     ? TextFormField(
                         controller: _controller,
-                        cursorColor: Colors.black,
+                        cursorColor: Get.isDarkMode ? Colors.white : Colors.black,
                         keyboardType: widget.keyboardType,
                         decoration: InputDecoration(
                           hintText: widget.placeHolder,
-                          hintStyle: TextStyle(
-                            fontSize: 14,
-                          ),
+                          hintStyle: TextStyle(fontSize: 14),
                           isCollapsed: true,
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
