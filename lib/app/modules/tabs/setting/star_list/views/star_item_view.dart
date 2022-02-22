@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/common/views/MoneyView.dart';
 import 'package:flutter_app/app/modules/tabs/home/goods_item_model.dart';
 import 'package:flutter_app/app/modules/tabs/setting/star_list/controllers/star_list_controller.dart';
 import 'package:flutter_app/app/routes/app_pages.dart';
@@ -97,10 +98,7 @@ class StarItemView extends StatelessWidget {
                   //   item.place!,
                   //   style: TextStyle(fontSize: 14, color: Colors.black87),
                   // ),
-                  Text(
-                    item.price.toString(),
-                    style: TextStyle(fontSize: 14, color: Colors.black87),
-                  ),
+                  MoneyView(money: item.price!),
                   SizedBox(
                     height: 10,
                   ),

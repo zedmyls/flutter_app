@@ -13,18 +13,14 @@ class OrderPreviewView extends GetView<OrderPreviewController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        title: Text(
-          '订单预览',
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
+        context: context,
+        title: '订单预览',
       ),
       body: Column(
         children: <Widget>[
           Container(
             padding: EdgeInsets.symmetric(vertical: 10),
-            color: Colors.white,
+            color: Get.isDarkMode ? Color(0xff303030) : Colors.white,
             child: Obx(
               () => controller.hasDefaultAddr
                   ? AddrItemView(
@@ -57,7 +53,7 @@ class OrderPreviewView extends GetView<OrderPreviewController> {
             ),
           ),
           Container(
-            color: Colors.white,
+            color: Get.isDarkMode ? Color(0xff303030) : Colors.white,
             padding: EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

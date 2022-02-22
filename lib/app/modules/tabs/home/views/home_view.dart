@@ -14,12 +14,8 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        title: Text(
-          '主页',
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
+        context: context,
+        title: '主页',
       ),
       drawer: HomeDrawer(),
       body: NestedScrollView(
@@ -43,7 +39,7 @@ class HomeView extends GetView<HomeController> {
                 (e) => KeepAliveTabView(
                   Container(
                     child: GoodsListView(e.value!),
-                    color: Colors.white,
+                    color: context.isDarkMode ? Color(0xff303030) : Colors.white,
                   ),
                 ),
               )

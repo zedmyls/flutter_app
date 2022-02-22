@@ -42,7 +42,7 @@ class GoodsItem extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      color: Colors.white,
+                      color: Get.isDarkMode ? Color(0xff303030) : Colors.white,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +69,10 @@ class GoodsItem extends StatelessWidget {
                                       children: <Widget>[
                                         Text(
                                           '销量：${item.sales!.toString()}',
-                                          style: TextStyle(fontSize: 14, color: Colors.grey.withOpacity(0.8)),
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.grey.withOpacity(0.8),
+                                          ),
                                         ),
                                       ],
                                     ),

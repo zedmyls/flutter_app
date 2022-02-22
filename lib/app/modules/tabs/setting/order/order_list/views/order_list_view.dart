@@ -18,7 +18,7 @@ class OrderListView extends GetView<OrderListController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff0f0f0),
+      backgroundColor: Get.isDarkMode ? Color(0xff404040) : Color(0xfff0f0f0),
       body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,
@@ -163,7 +163,7 @@ class _BuildItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
-          color: Colors.white,
+          color: Get.isDarkMode ? Color(0xff303030) : Colors.white,
         ),
         width: double.infinity,
         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -178,6 +178,7 @@ class _BuildItem extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 16,
+                    color: Get.isDarkMode ? Colors.white : Colors.black,
                   ),
                 ),
                 Text(

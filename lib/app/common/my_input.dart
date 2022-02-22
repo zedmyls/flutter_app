@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MyInput extends StatefulWidget {
   final String label;
@@ -52,7 +53,7 @@ class _MyInputState extends State<MyInput> {
         ),
         Container(
           height: 58,
-          color: Colors.white,
+          color: Get.isDarkMode ? Color(0xff303030) : Colors.white,
           padding: EdgeInsets.only(left: 20, right: 10),
           child: Row(
             children: [

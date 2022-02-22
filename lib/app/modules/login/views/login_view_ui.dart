@@ -22,7 +22,7 @@ class LoginViewUI extends GetView<LoginController> {
                 blurRadius: 25.0,
               )
             ],
-            color: Colors.white,
+            color: Get.isDarkMode ? Color(0xff303030) : Colors.white,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(32),
               bottomRight: Radius.circular(32),

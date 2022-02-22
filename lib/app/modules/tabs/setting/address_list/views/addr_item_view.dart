@@ -64,7 +64,6 @@ class AddrItemView extends StatelessWidget {
           trailing: onTap != null
               ? Icon(
                   Icons.keyboard_arrow_right,
-                  color: Colors.black,
                   size: 30,
                 )
               : null,

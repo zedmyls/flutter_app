@@ -15,11 +15,12 @@ class ShopcartView extends GetView<ShopcartController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        title: Obx(
+        context: context,
+        titleWidget: Obx(
           () => Text(
             '购物车 (${controller.totalCount})',
             style: TextStyle(
-              color: Colors.black,
+              color: Get.isDarkMode ? Colors.white : Colors.black,
             ),
           ),
         ),

@@ -10,14 +10,10 @@ class AddressEditView extends GetView<AddressEditController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff6f6f6),
+      backgroundColor: Get.isDarkMode ? Color(0xff303030) : Color(0xfff6f6f6),
       appBar: MyAppBar(
-        title: Text(
-          controller.isUpdate ? '编辑地址' : '添加地址',
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
+        context: context,
+        title: controller.isUpdate ? '编辑地址' : '添加地址',
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -55,8 +51,15 @@ class AddressEditView extends GetView<AddressEditController> {
                 ),
                 onTap: () async {
                   final addr = await CityPickers.showCityPicker(
-                      context: context,
-                      locationCode: controller.params.areaCode.isNotEmpty ? controller.params.areaCode : '110000');
+                    context: context,
+                    theme: Get.isDarkMode
+                        ? ThemeData(
+                            scaffoldBackgroundColor: Color(0xff303030),
+                            primaryColor: Colors.white, // 字体
+                          )
+                        : null,
+                    locationCode: controller.params.areaCode.isNotEmpty ? controller.params.areaCode : '110000',
+                  );
 
                   if (addr != null) {
                     controller.obsParams.update((val) {

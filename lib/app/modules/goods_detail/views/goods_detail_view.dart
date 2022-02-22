@@ -14,6 +14,7 @@ class GoodsDetailView extends StatelessWidget {
     Get.put(GoodsDetailController(), tag: Get.arguments.toString());
     return Scaffold(
       appBar: MyAppBar(
+        context: context,
         actions: <Widget>[
           Row(
             children: [
@@ -33,7 +34,7 @@ class GoodsDetailView extends StatelessWidget {
                 () => Text(
                   controller.detail.collected != null ? formatStarCount(controller.detail.collected!) : '',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Get.isDarkMode ? Colors.white : Colors.black,
                   ),
                 ),
               ),
@@ -41,10 +42,7 @@ class GoodsDetailView extends StatelessWidget {
             ],
           )
         ],
-        title: Text(
-          "商品详情",
-          style: TextStyle(color: Colors.grey.shade800),
-        ),
+        title: '商品详情',
       ),
       body: _buildPageContent(),
     );

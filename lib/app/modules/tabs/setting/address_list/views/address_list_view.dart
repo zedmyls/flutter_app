@@ -15,12 +15,8 @@ class AddressListView extends GetView<AddressListController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        title: Text(
-          '地址管理',
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
+        context: context,
+        title: '地址管理',
       ),
       body: Obx(
         () => controller.list.isNotEmpty

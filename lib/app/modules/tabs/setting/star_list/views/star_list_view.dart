@@ -12,10 +12,8 @@ class StarListView extends GetView<StarListController> {
     return Obx(
       () => Scaffold(
         appBar: MyAppBar(
-          title: Text(
-            '收藏',
-            style: TextStyle(color: Colors.black),
-          ),
+          context: context,
+          title: '收藏',
           actions: <Widget>[
             IconButton(
               onPressed: controller.collection.isNotEmpty
@@ -38,7 +36,7 @@ class StarListView extends GetView<StarListController> {
         ),
         body: Container(
           child: StarDetailListView(),
-          color: Colors.white,
+          color: Get.isDarkMode ? Color(0xff303030) : Colors.white,
         ),
       ),
     );
@@ -46,7 +44,7 @@ class StarListView extends GetView<StarListController> {
 
   Widget _buildFilter() {
     return Container(
-      color: const Color(0xfff9f9f9),
+      color: Get.isDarkMode ? Color(0xff303030) : Color(0xfff9f9f9),
       padding: EdgeInsets.all(10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

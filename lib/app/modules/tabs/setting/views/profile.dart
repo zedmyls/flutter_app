@@ -15,7 +15,7 @@ class ProfileView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Theme.of(context).colorScheme.secondary,
+        backgroundColor: Get.isDarkMode ? Color(0xff303030) : Theme.of(context).colorScheme.secondary,
         title: Text('Profile'),
         centerTitle: true,
       ),
@@ -61,7 +61,7 @@ class ProfileView extends StatelessWidget {
       height: height,
       width: width,
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.secondary,
+        color: Get.isDarkMode ? Color(0xff303030) : Theme.of(context).colorScheme.secondary,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(16.0),
           bottomRight: Radius.circular(16.0),
@@ -209,7 +209,11 @@ class ProfileView extends StatelessWidget {
             text,
             style: TextStyle(
               fontSize: 15.0,
-              color: top ? Colors.white : Colors.black,
+              color: top
+                  ? Colors.white
+                  : Get.isDarkMode
+                      ? Colors.white
+                      : Colors.black,
             ),
           ),
         ],

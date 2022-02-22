@@ -12,7 +12,7 @@ class MyTabBar<T extends HomeController> extends StatelessWidget {
     return Container(
       width: Get.width,
       height: 50,
-      color: const Color(0xfff9f9f9),
+      color: Get.isDarkMode ? Color(0xff303030) : Color(0xfff9f9f9),
       padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: TabBar(
         isScrollable: isScrollable,
@@ -22,7 +22,9 @@ class MyTabBar<T extends HomeController> extends StatelessWidget {
               (e) => Tab(
                 child: Text(
                   e.value!,
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(
+                    color: Get.isDarkMode ? Colors.white : Colors.black,
+                  ),
                 ),
               ),
             )

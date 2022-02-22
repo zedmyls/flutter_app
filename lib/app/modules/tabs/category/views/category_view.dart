@@ -9,17 +9,15 @@ class CategoryView extends GetView<CategoryController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        title: Text(
-          '分类',
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
+        title: '分类',
+        context: context,
       ),
       body: Center(
-        child: Text(
-          'CategoryView is working',
-          style: TextStyle(fontSize: 20),
+        child: GestureDetector(
+          child: Text('更换主题'),
+          onTap: () {
+            Get.changeTheme(Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
+          },
         ),
       ),
     );

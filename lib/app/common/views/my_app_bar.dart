@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MyAppBar extends AppBar {
   MyAppBar({
-    Widget? title,
+    required BuildContext context,
+    String? title,
+    Widget? titleWidget,
     final List<Widget>? actions,
-    Color backgroundColor = Colors.white,
+    double elevation = 4,
     PreferredSize? bottom,
   }) : super(
-          title: title,
+          title: titleWidget ??
+              Text(
+                title ?? '',
+                style: TextStyle(
+                  color: context.isDarkMode ? Colors.white : Colors.black,
+                ),
+              ),
           iconTheme: IconThemeData(
-            color: Colors.black,
+            color: context.isDarkMode ? Colors.white : Colors.black,
           ),
-          backgroundColor: backgroundColor,
-          elevation: 4,
+          backgroundColor: context.isDarkMode ? Color(0xff303030) : Colors.white,
+          elevation: elevation,
           actions: actions,
           bottom: bottom,
         );

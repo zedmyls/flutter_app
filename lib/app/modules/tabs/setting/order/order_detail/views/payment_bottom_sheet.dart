@@ -12,7 +12,7 @@ class PaymentBottomSheet extends GetView<OrderDetailController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Get.isDarkMode ? Color(0xff303030) : Colors.white,
       padding: EdgeInsets.all(10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

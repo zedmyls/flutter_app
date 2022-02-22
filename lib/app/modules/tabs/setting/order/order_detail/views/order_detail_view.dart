@@ -13,11 +13,12 @@ class OrderDetailView extends GetView<OrderDetailController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        title: Obx(
+        context: context,
+        titleWidget: Obx(
           () => Text(
             OrderStatus.values[controller.status - 1].value,
             style: TextStyle(
-              color: Colors.black,
+              color: Get.isDarkMode ? Colors.white : Colors.black,
             ),
           ),
         ),
@@ -27,7 +28,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
           children: <Widget>[
             Obx(
               () => Container(
-                color: Colors.white,
+                color: Get.isDarkMode ? Color(0xff404040) : Colors.white,
                 padding: EdgeInsets.symmetric(vertical: 10),
                 child: AddrItemView(controller.addr),
               ),
@@ -48,7 +49,7 @@ class OrderDetailView extends GetView<OrderDetailController> {
               ),
             ),
             Container(
-              color: Colors.white,
+              color: Get.isDarkMode ? Color(0xff404040) : Colors.white,
               margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
               child: Column(
                 children: <Widget>[

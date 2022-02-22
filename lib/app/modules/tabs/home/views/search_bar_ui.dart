@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SearchBarUI extends StatelessWidget {
   const SearchBarUI({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class SearchBarUI extends StatelessWidget {
               padding: const EdgeInsets.only(right: 16, top: 8, bottom: 8),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Get.isDarkMode ? Color(0xff303030) : Colors.white,
                   borderRadius: const BorderRadius.all(
                     Radius.circular(38.0),
                   ),
