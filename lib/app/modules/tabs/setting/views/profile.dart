@@ -43,7 +43,7 @@ class ProfileView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       buildOption('assets/images/tabs/profile/about_us.png', '关于我们', false),
-                      buildOption('assets/images/daifufeizhangdan.png', 'Daily bonus', false),
+                      buildOption('assets/images/daifufeizhangdan.png', '意见反馈', false),
                       buildOption('assets/images/tabs/profile/visitor.png', 'Visitors', false),
                     ],
                   ),

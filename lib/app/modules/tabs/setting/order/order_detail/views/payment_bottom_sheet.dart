@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/common/user_controller.dart';
+import 'package:flutter_app/app/common/views/MoneyView.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/order_detail/controllers/order_detail_controller.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
@@ -33,20 +34,11 @@ class PaymentBottomSheet extends GetView<OrderDetailController> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      '￥',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
                     Obx(
-                      () => Text(
-                        '${controller.order.totalPrice}.00',
-                        style: TextStyle(
-                          fontSize: 35,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      () => MoneyView(
+                        money: controller.order.totalPrice ?? 0,
+                        fontSize: 35,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ],

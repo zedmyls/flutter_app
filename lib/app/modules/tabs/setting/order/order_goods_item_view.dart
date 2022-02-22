@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/common/views/MoneyView.dart';
 import 'package:flutter_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
@@ -41,9 +42,9 @@ class OrderGoodsItemView extends StatelessWidget {
                     children: <Widget>[
                       Align(
                         alignment: Alignment.centerLeft,
-                        child: Text(
-                          "￥${item.goodsId != null ? item.goodsId!.price! : 0}",
-                          style: TextStyle(color: Colors.red),
+                        child: MoneyView(
+                          money: item.goodsId != null ? item.goodsId!.price! : 0,
+                          color: Colors.red,
                         ),
                       ),
                       Align(

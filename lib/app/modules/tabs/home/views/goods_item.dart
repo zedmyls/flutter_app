@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/common/views/MoneyView.dart';
 import 'package:flutter_app/app/modules/tabs/home/goods_item_model.dart';
 import 'package:flutter_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
@@ -83,13 +84,10 @@ class GoodsItem extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: <Widget>[
-                                Text(
-                                  '￥${item.price}',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 22,
-                                  ),
+                                MoneyView(
+                                  money: item.price!,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 22,
                                 ),
                               ],
                             ),

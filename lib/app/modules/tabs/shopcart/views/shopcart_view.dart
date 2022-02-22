@@ -8,6 +8,8 @@ import 'package:flutter_app/app/modules/tabs/shopcart/views/cart_item_view.dart'
 import 'package:flutter_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
+import '../../../../common/views/MoneyView.dart';
+
 class ShopcartView extends GetView<ShopcartController> {
   @override
   Widget build(BuildContext context) {
@@ -55,14 +57,18 @@ class ShopcartView extends GetView<ShopcartController> {
             child: Row(
               children: <Widget>[
                 Text(
-                  "Checkout Price:",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  "结算总计:",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
                 Spacer(),
-                Text(
-                  "￥ ${controller.totalPrice}",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                )
+                MoneyView(
+                  money: controller.totalPrice,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
               ],
             ),
           ),

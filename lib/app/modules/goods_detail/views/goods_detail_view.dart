@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/common/utils.dart';
+import 'package:flutter_app/app/common/views/MoneyView.dart';
 import 'package:flutter_app/app/common/views/my_app_bar.dart';
 import 'package:flutter_app/app/modules/goods_detail/controllers/goods_detail_controller.dart';
 import 'package:flutter_app/app/routes/app_pages.dart';
@@ -77,10 +78,13 @@ class GoodsDetailView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Obx(
-                        () => Text(
-                          controller.detail.price != null ? '￥${controller.detail.price}' : '',
-                          style: TextStyle(color: Colors.red, fontSize: 18.0, fontWeight: FontWeight.w600),
-                        ),
+                        () => controller.detail.price != null
+                            ? MoneyView(
+                                money: controller.detail.price!,
+                                color: Colors.red,
+                                fontWeight: FontWeight.w600,
+                              )
+                            : Container(),
                       ),
                     ],
                   ),

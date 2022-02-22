@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/common/views/MoneyView.dart';
 import 'package:flutter_app/app/common/views/keep_alive_tab_view.dart';
 import 'package:flutter_app/app/common/views/no_data.dart';
 import 'package:flutter_app/app/common/views/refresh_view.dart';
@@ -230,19 +231,18 @@ class _BuildItem extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
-                  '总价：￥${order.totalPrice}，',
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 14,
-                  ),
+                MoneyView(
+                  money: order.totalPrice!,
+                  color: Colors.grey,
+                  fontSize: 14,
+                  prefix: '总价：',
                 ),
-                Text(
-                  '实付款：￥${order.totalPrice}',
-                  style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 16,
-                  ),
+                SizedBox(width: 5),
+                MoneyView(
+                  money: order.totalPrice!,
+                  color: Colors.red,
+                  fontSize: 16,
+                  prefix: '实付款：',
                 ),
               ],
             ),

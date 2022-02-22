@@ -15,6 +15,7 @@ dependencies:
   flutter_easyloading: ^3.0.3
   badges: ^2.0.2
   city_pickers: 1.0.1
+  intl: ^0.17.0
   flutter: 
     sdk: flutter
 

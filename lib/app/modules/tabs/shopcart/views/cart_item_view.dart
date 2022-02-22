@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/common/views/MoneyView.dart';
 import 'package:flutter_app/app/modules/tabs/shopcart/cart_item_model.dart';
 import 'package:flutter_app/app/modules/tabs/shopcart/controllers/shopcart_controller.dart';
 import 'package:flutter_app/app/routes/app_pages.dart';
@@ -88,36 +89,35 @@ class CartItemView extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        Text("Price: "),
+                        Text("单价: "),
                         SizedBox(
                           width: 5,
                         ),
-                        Text(
-                          '￥${item.goodsId!.price}',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Text("Sub Total: "),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          '￥${item.goodsId!.price! * item.num!}',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            color: Colors.orange,
-                          ),
+                        MoneyView(
+                          money: item.goodsId!.price!,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w300,
                         ),
                       ],
                     ),
                     Row(
                       children: <Widget>[
+                        Text("总计: "),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        MoneyView(
+                          money: item.goodsId!.price! * item.num!,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.orange,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
                         Text(
-                          "Ships Free",
+                          "免邮费",
                           style: TextStyle(color: Colors.orange),
                         ),
                         Spacer(),

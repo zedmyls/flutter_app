@@ -2,6 +2,7 @@ import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 /// snackBar 错误通知
 void showErrorMessage(String message) {
@@ -106,4 +107,15 @@ confirmDialog({
       ],
     ),
   );
+}
+
+/// format
+class FormatUtils {
+  FormatUtils._();
+
+  // 保留两位小数
+  static String formatMoney(int money) {
+    if (money < 1000) return NumberFormat('0.00').format(money);
+    return NumberFormat('0,000.00').format(money);
+  }
 }

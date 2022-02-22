@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/common/views/MoneyView.dart';
 import 'package:flutter_app/app/common/views/my_app_bar.dart';
 import 'package:flutter_app/app/modules/tabs/setting/address_list/views/addr_item_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/order_goods_item_view.dart';
@@ -74,13 +75,11 @@ class OrderPreviewView extends GetView<OrderPreviewController> {
         children: [
           Text('合计：'),
           Obx(
-            () => Text(
-              '￥${controller.totalPrice}',
-              style: TextStyle(
-                color: Colors.red,
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-              ),
+            () => MoneyView(
+              money: controller.totalPrice,
+              color: Colors.red,
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
             ),
           ),
           SizedBox(width: 10),
