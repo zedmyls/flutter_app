@@ -9,6 +9,7 @@ class MyInput extends StatefulWidget {
   final Widget? otherWidget;
   final TextInputType? keyboardType;
   final ValueChanged? onChanged;
+  final int maxLength;
 
   const MyInput({
     required this.label,
@@ -18,6 +19,7 @@ class MyInput extends StatefulWidget {
     this.otherWidget,
     this.keyboardType,
     this.onChanged,
+    this.maxLength = 20,
     Key? key,
   }) : super(key: key);
 
@@ -66,9 +68,17 @@ class _MyInputState extends State<MyInput> {
                 child: widget.otherWidget == null
                     ? TextFormField(
                         controller: _controller,
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            return '${widget.label}不能为空';
+                          }
+                          return null;
+                        },
+                        maxLength: widget.maxLength,
                         cursorColor: Get.isDarkMode ? Colors.white : Colors.black,
                         keyboardType: widget.keyboardType,
                         decoration: InputDecoration(
+                          counterText: '',
                           hintText: widget.placeHolder,
                           hintStyle: TextStyle(fontSize: 14),
                           isCollapsed: true,

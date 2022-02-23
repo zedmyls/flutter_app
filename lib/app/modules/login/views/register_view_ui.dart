@@ -84,99 +84,135 @@ class RegisterViewUI extends GetView<RegisterController> {
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
                 ),
               ),
-              Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 16, right: 16, top: 32, bottom: 8),
-                    child: TextField(
-                      onChanged: (value) {
-                        controller.obsParams.update((val) {
-                          val!.username = value;
-                        });
-                      },
-                      style: TextStyle(fontSize: 18),
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        hintText: '用户名',
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: Colors.grey)),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: Colors.grey)),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-                    child: TextField(
-                      onChanged: (value) {
-                        controller.obsParams.update((val) {
-                          val!.email = value;
-                        });
-                      },
-                      keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(fontSize: 18),
-                      decoration: InputDecoration(
-                        hintText: '邮箱',
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: Colors.grey)),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: Colors.grey)),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-                    child: TextField(
-                      onChanged: (value) {
-                        controller.obsParams.update((val) {
-                          val!.password = value;
-                        });
-                      },
-                      obscureText: true,
-                      style: TextStyle(fontSize: 18),
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        hintText: '密码',
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: Colors.grey)),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: Colors.grey)),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-                    child: TextField(
-                      onChanged: (value) {
-                        controller.confirmPwd.value = value;
-                      },
-                      obscureText: true,
-                      style: TextStyle(fontSize: 18),
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        hintText: '确认密码',
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: Colors.grey)),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: Colors.grey)),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Container(
-                      margin: EdgeInsets.all(16),
-                      decoration: BoxDecoration(color: Theme.of(context).colorScheme.secondary, shape: BoxShape.circle),
-                      child: IconButton(
-                        color: Colors.white,
-                        onPressed: () {
-                          controller.register();
+              Form(
+                key: controller.formKey,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 16, right: 16, top: 32, bottom: 8),
+                      child: TextFormField(
+                        onChanged: (value) {
+                          controller.obsParams.update((val) {
+                            val!.username = value;
+                          });
                         },
-                        icon: Icon(Icons.arrow_forward),
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            return '用户名不能为空';
+                          }
+                          return null;
+                        },
+                        style: TextStyle(fontSize: 18),
+                        keyboardType: TextInputType.text,
+                        maxLength: 10,
+                        decoration: InputDecoration(
+                          hintText: '用户名',
+                          counterText: '',
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: Colors.grey)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: Colors.grey)),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                      child: TextFormField(
+                        onChanged: (value) {
+                          controller.obsParams.update((val) {
+                            val!.email = value;
+                          });
+                        },
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            return '邮箱地址不能为空';
+                          }
+                          return null;
+                        },
+                        keyboardType: TextInputType.emailAddress,
+                        style: TextStyle(fontSize: 18),
+                        maxLength: 20,
+                        decoration: InputDecoration(
+                          hintText: '邮箱',
+                          counterText: '',
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: Colors.grey)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: Colors.grey)),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                      child: TextFormField(
+                        onChanged: (value) {
+                          controller.obsParams.update((val) {
+                            val!.password = value;
+                          });
+                        },
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            return '密码不能为空';
+                          }
+                          return null;
+                        },
+                        maxLength: 16,
+                        obscureText: true,
+                        style: TextStyle(fontSize: 18),
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          counterText: '',
+                          hintText: '密码',
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: Colors.grey)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: Colors.grey)),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                      child: TextFormField(
+                        onChanged: (value) {
+                          controller.confirmPwd.value = value;
+                        },
+                        validator: (value) {
+                          if (controller.params.password != value) {
+                            return '两次密码输入不一致';
+                          }
+                          return null;
+                        },
+                        obscureText: true,
+                        style: TextStyle(fontSize: 18),
+                        keyboardType: TextInputType.text,
+                        maxLength: 16,
+                        decoration: InputDecoration(
+                          counterText: '',
+                          hintText: '确认密码',
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: Colors.grey)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: Colors.grey)),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                        margin: EdgeInsets.all(16),
+                        decoration:
+                            BoxDecoration(color: Theme.of(context).colorScheme.secondary, shape: BoxShape.circle),
+                        child: IconButton(
+                          color: Colors.white,
+                          onPressed: () {
+                            controller.login();
+                          },
+                          icon: Icon(Icons.arrow_forward),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

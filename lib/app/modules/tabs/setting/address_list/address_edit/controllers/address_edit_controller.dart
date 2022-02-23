@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_app/app/common/mixins/get_params_mixin.dart';
 import 'package:flutter_app/app/common/network/global.dart';
 import 'package:flutter_app/app/common/utils.dart';
@@ -11,6 +12,7 @@ class AddressEditController extends GetxController with GetParamsMixin<AddrModel
   late final int? _id;
   // 更新地址时才会用到
   final _data = AddrModel().obs;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   String get url => 'addr';
   AddrModel get data => _data.value;
@@ -18,6 +20,12 @@ class AddressEditController extends GetxController with GetParamsMixin<AddrModel
 
   // 添加或更新地址
   submit() {
+    if (!formKey.currentState!.validate()) return;
+    if (params.address.isEmpty) {
+      showErrorMessage('请选择地址');
+      return;
+    }
+
     loadingToast(
       () => isUpdate
           ? HttpUtils.instance.put(

@@ -17,95 +17,101 @@ class AddressEditView extends GetView<AddressEditController> {
         title: controller.isUpdate ? '编辑地址' : '添加地址',
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            MyInput(
-              label: '姓名',
-              placeHolder: '收货人姓名',
-              line: false,
-              onChanged: (value) {
-                controller.obsParams.update((val) {
-                  val!.name = value;
-                });
-              },
-            ),
-            MyInput(
-              label: '手机号',
-              placeHolder: '收货人手机号',
-              keyboardType: TextInputType.number,
-              onChanged: (value) {
-                controller.obsParams.update((val) {
-                  val!.tel = value;
-                });
-              },
-            ),
-            MyInput(
-              label: '地址',
-              otherWidget: GestureDetector(
-                child: Obx(
-                  () => Text(
-                    controller.params.address.isNotEmpty ? controller.params.address : '省市县，点击选择',
-                    style: TextStyle(
-                      color: controller.params.address.isNotEmpty ? Colors.black : Colors.grey,
-                    ),
-                  ),
-                ),
-                onTap: () async {
-                  final addr = await CityPickers.showCityPicker(
-                    context: context,
-                    theme: Get.isDarkMode
-                        ? ThemeData(
-                            scaffoldBackgroundColor: Color(0xff303030),
-                            primaryColor: Colors.white, // 字体
-                          )
-                        : null,
-                    locationCode: controller.params.areaCode.isNotEmpty ? controller.params.areaCode : '110000',
-                  );
-
-                  if (addr != null) {
-                    controller.obsParams.update((val) {
-                      val!.areaCode = addr.areaId!;
-                      val.address = '${addr.provinceName}${addr.cityName}${addr.areaName}';
-                    });
-                  }
+        child: Form(
+          key: controller.formKey,
+          child: Column(
+            children: [
+              MyInput(
+                label: '姓名',
+                placeHolder: '收货人姓名',
+                line: false,
+                maxLength: 10,
+                onChanged: (value) {
+                  controller.obsParams.update((val) {
+                    val!.name = value;
+                  });
                 },
               ),
-            ),
-            MyInput(
-              label: '详细地址',
-              placeHolder: '街道门牌、楼层房间号等信息',
-              onChanged: (value) {
-                controller.obsParams.update((val) {
-                  val!.addressDetail = value;
-                });
-              },
-            ),
-            MyInput(
-              label: '设为默认收货地址',
-              otherWidget: Obx(
-                () => Switch(
-                  value: controller.params.isDefault ?? false,
-                  onChanged: (flag) {
-                    controller.obsParams.update((val) {
-                      val!.isDefault = flag;
-                    });
+              MyInput(
+                label: '手机号',
+                placeHolder: '收货人手机号',
+                keyboardType: TextInputType.number,
+                onChanged: (value) {
+                  controller.obsParams.update((val) {
+                    val!.tel = value;
+                  });
+                },
+              ),
+              MyInput(
+                label: '地址',
+                otherWidget: GestureDetector(
+                  child: Obx(
+                    () => Text(
+                      controller.params.address.isNotEmpty ? controller.params.address : '省市县，点击选择',
+                      style: TextStyle(
+                        color: controller.params.address.isNotEmpty
+                            ? (Get.isDarkMode ? Colors.white : Colors.black)
+                            : Colors.grey,
+                      ),
+                    ),
+                  ),
+                  onTap: () async {
+                    final addr = await CityPickers.showCityPicker(
+                      context: context,
+                      theme: Get.isDarkMode
+                          ? ThemeData(
+                              scaffoldBackgroundColor: Color(0xff303030),
+                              primaryColor: Colors.white, // 字体
+                            )
+                          : null,
+                      locationCode: controller.params.areaCode.isNotEmpty ? controller.params.areaCode : '110000',
+                    );
+
+                    if (addr != null) {
+                      controller.obsParams.update((val) {
+                        val!.areaCode = addr.areaId!;
+                        val.address = '${addr.provinceName}${addr.cityName}${addr.areaName}';
+                      });
+                    }
                   },
                 ),
               ),
-            ),
-            SizedBox(height: 20),
-            Container(
-              width: 200,
-              height: 40,
-              child: GradientButton(
-                onPressed: () {
-                  controller.submit();
+              MyInput(
+                label: '详细地址',
+                placeHolder: '街道门牌、楼层房间号等信息',
+                onChanged: (value) {
+                  controller.obsParams.update((val) {
+                    val!.addressDetail = value;
+                  });
                 },
-                title: '保存',
-                type: ButtonType.info,
               ),
-            ),
-          ],
+              MyInput(
+                label: '设为默认收货地址',
+                otherWidget: Obx(
+                  () => Switch(
+                    value: controller.params.isDefault ?? false,
+                    onChanged: (flag) {
+                      controller.obsParams.update((val) {
+                        val!.isDefault = flag;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Container(
+                width: 200,
+                height: 40,
+                child: GradientButton(
+                  onPressed: () {
+                    controller.submit();
+                  },
+                  title: '保存',
+                  type: ButtonType.info,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
