@@ -71,7 +71,7 @@ confirmDialog({
               child: Text(
                 '取消',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: Get.isDarkMode ? Colors.white : Colors.black,
                   fontSize: 16,
                 ),
               ),

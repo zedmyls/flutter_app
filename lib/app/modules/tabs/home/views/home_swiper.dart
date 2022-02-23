@@ -15,28 +15,32 @@ class HomeSwiper extends StatelessWidget {
       height: Get.width / 1.4,
       width: Get.width,
       child: Obx(
-        () => Swiper(
-          itemBuilder: (ctx, index) {
-            return Image.network(
-              _controller.banner[index].coverUrl!,
-              fit: BoxFit.fitWidth,
-            );
-          },
-          itemCount: _controller.banner.length,
-          loop: true,
-          autoplay: true,
-          pagination: SwiperPagination(
-            builder: DotSwiperPaginationBuilder(
-              activeColor: Get.isDarkMode ? Colors.white : Colors.lightBlueAccent,
-            ),
-          ),
-          onTap: (index) {
-            Get.toNamed(
-              Routes.GOODS_DETAIL,
-              arguments: _controller.banner[index].id,
-            );
-          },
-        ),
+        () => _controller.banner.isNotEmpty
+            ? Swiper(
+                itemBuilder: (ctx, index) {
+                  return Image.network(
+                    _controller.banner[index].coverUrl!,
+                    fit: BoxFit.fitWidth,
+                  );
+                },
+                itemCount: _controller.banner.length,
+                loop: true,
+                autoplay: true,
+                pagination: SwiperPagination(
+                  builder: DotSwiperPaginationBuilder(
+                    activeColor: Get.isDarkMode ? Colors.white : Colors.lightBlueAccent,
+                  ),
+                ),
+                onTap: (index) {
+                  Get.toNamed(
+                    Routes.GOODS_DETAIL,
+                    arguments: _controller.banner[index].id,
+                  );
+                },
+              )
+            : Container(
+                height: 100,
+              ),
       ),
     );
   }
