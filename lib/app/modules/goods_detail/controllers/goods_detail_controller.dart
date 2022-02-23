@@ -37,11 +37,8 @@ class GoodsDetailController extends GetxController {
       '_id': detail.id_,
     });
 
-    // 后端是我之前写的，烂！
-    if (res.statusCode == 201) {
-      showSuccessMessage(res.data['message']);
-      Get.find<ShopcartController>().load();
-    }
+    showSuccessMessage(res.data['message']);
+    Get.find<ShopcartController>().load();
   }
 
   // 查询该商品是否被收藏

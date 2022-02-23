@@ -1,5 +1,6 @@
 import 'package:flutter_app/app/common/models/user_model.dart';
 import 'package:flutter_app/app/common/network/global.dart';
+import 'package:flutter_app/app/modules/tabs/shopcart/controllers/shopcart_controller.dart';
 import 'package:get/get.dart';
 
 class UserController extends GetxController {
@@ -28,6 +29,7 @@ class UserController extends GetxController {
   // 注销登录
   logout() {
     token = '';
+    Get.find<ShopcartController>().cartList.clear();
   }
 
   @override

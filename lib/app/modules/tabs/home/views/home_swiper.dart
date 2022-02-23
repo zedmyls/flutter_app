@@ -11,31 +11,32 @@ class HomeSwiper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(HomeBannerController());
     return Container(
       height: Get.width / 1.4,
       width: Get.width,
-      child: Swiper(
-        itemBuilder: (ctx, index) {
-          return Image.network(
-            _controller.banner[index].coverUrl!,
-            fit: BoxFit.fitWidth,
-          );
-        },
-        itemCount: _controller.banner.length,
-        loop: true,
-        autoplay: true,
-        pagination: SwiperPagination(
-          builder: DotSwiperPaginationBuilder(
-            activeColor: Get.isDarkMode ? Colors.white : Colors.lightBlueAccent,
+      child: Obx(
+        () => Swiper(
+          itemBuilder: (ctx, index) {
+            return Image.network(
+              _controller.banner[index].coverUrl!,
+              fit: BoxFit.fitWidth,
+            );
+          },
+          itemCount: _controller.banner.length,
+          loop: true,
+          autoplay: true,
+          pagination: SwiperPagination(
+            builder: DotSwiperPaginationBuilder(
+              activeColor: Get.isDarkMode ? Colors.white : Colors.lightBlueAccent,
+            ),
           ),
+          onTap: (index) {
+            Get.toNamed(
+              Routes.GOODS_DETAIL,
+              arguments: _controller.banner[index].id,
+            );
+          },
         ),
-        onTap: (index) {
-          Get.toNamed(
-            Routes.GOODS_DETAIL,
-            arguments: _controller.banner[index].id,
-          );
-        },
       ),
     );
   }
