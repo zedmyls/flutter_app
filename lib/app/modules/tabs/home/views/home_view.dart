@@ -3,6 +3,7 @@ import 'package:flutter_app/app/common/views/keep_alive_tab_view.dart';
 import 'package:flutter_app/app/common/views/my_app_bar.dart';
 import 'package:flutter_app/app/modules/tabs/home/goodsList/views/goods_list_view.dart';
 import 'package:flutter_app/app/modules/tabs/home/views/home_drawer.dart';
+import 'package:flutter_app/app/modules/tabs/home/views/home_swiper.dart';
 import 'package:flutter_app/app/modules/tabs/home/views/my_tab_bar.dart';
 import 'package:flutter_app/app/modules/tabs/home/views/search_bar_ui.dart';
 import 'package:get/get.dart';
@@ -21,6 +22,9 @@ class HomeView extends GetView<HomeController> {
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
+            SliverToBoxAdapter(
+              child: HomeSwiper(),
+            ),
             SliverToBoxAdapter(
               child: SearchBarUI(),
             ),

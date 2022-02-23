@@ -118,4 +118,9 @@ class FormatUtils {
     if (money < 1000) return NumberFormat('0.00').format(money);
     return NumberFormat('0,000.00').format(money);
   }
+
+  // 格式化时间
+  static String formatTime(String time) {
+    return DateFormat('yyyy-MM-dd hh:mm:ss').format(DateTime.parse(time));
+  }
 }

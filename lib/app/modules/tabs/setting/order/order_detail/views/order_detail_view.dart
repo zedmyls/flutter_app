@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/common/utils.dart';
 import 'package:flutter_app/app/common/views/my_buttons.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/enum/order_status.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/order_detail/controllers/order_detail_controller.dart';
@@ -76,7 +77,13 @@ class OrderDetailView extends GetView<OrderDetailController> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Obx(() => Text(controller.order.createAt ?? '')),
+                        Obx(
+                          () => controller.order.createAt != null
+                              ? Text(
+                                  FormatUtils.formatTime(controller.order.createAt!),
+                                )
+                              : Container(),
+                        ),
                       ],
                     ),
                   ),
