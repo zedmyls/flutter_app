@@ -12,12 +12,17 @@ abstract class Routes {
   static const CATEGORY = _Paths.TABS + _Paths.CATEGORY;
   static const GOODS_LIST = _Paths.TABS + _Paths.HOME + _Paths.GOODS_LIST;
   static const GOODS_DETAIL = _Paths.GOODS_DETAIL;
-  static const ADDRESS_LIST = _Paths.TABS + _Paths.SETTING + _Paths.ADDRESS_LIST;
-  static const ADDRESS_EDIT = _Paths.TABS + _Paths.SETTING + _Paths.ADDRESS_LIST + _Paths.ADDRESS_EDIT;
+  static const ADDRESS_LIST =
+      _Paths.TABS + _Paths.SETTING + _Paths.ADDRESS_LIST;
+  static const ADDRESS_EDIT =
+      _Paths.TABS + _Paths.SETTING + _Paths.ADDRESS_LIST + _Paths.ADDRESS_EDIT;
   static const STAR_LIST = _Paths.TABS + _Paths.SETTING + _Paths.STAR_LIST;
   static const ORDER_LIST = _Paths.TABS + _Paths.SETTING + _Paths.ORDER_LIST;
-  static const ORDER_PREVIEW = _Paths.TABS + _Paths.SETTING + _Paths.ORDER_PREVIEW;
-  static const ORDER_DETAIL = _Paths.TABS + _Paths.SETTING + _Paths.ORDER_DETAIL;
+  static const ORDER_PREVIEW =
+      _Paths.TABS + _Paths.SETTING + _Paths.ORDER_PREVIEW;
+  static const ORDER_DETAIL =
+      _Paths.TABS + _Paths.SETTING + _Paths.ORDER_DETAIL;
+  static const FEEDBACK = _Paths.TABS + _Paths.SETTING + _Paths.FEEDBACK;
 }
 
 abstract class _Paths {
@@ -35,4 +40,5 @@ abstract class _Paths {
   static const ORDER_LIST = '/order-list';
   static const ORDER_PREVIEW = '/order-preview';
   static const ORDER_DETAIL = '/order-detail';
+  static const FEEDBACK = '/feedback';
 }

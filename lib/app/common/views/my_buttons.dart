@@ -110,7 +110,7 @@ class GradientButton extends StatelessWidget {
     this.fontWeight = FontWeight.w400,
     required this.title,
     required this.type,
-    required this.onPressed,
+    this.onPressed,
   }) : super(key: key);
 
   @override
