@@ -36,7 +36,9 @@ class ProfileView extends StatelessWidget {
                       buildOption('assets/images/tabs/profile/addr.png', '地址管理', false, onTap: () {
                         Get.toNamed(Routes.ADDRESS_LIST);
                       }),
-                      buildOption('assets/images/tabs/profile/setting.png', '通用设置', false),
+                      buildOption('assets/images/tabs/profile/setting.png', '通用设置', false, onTap: () {
+                        Get.toNamed(Routes.GENERAL_SETTING);
+                      }),
                     ],
                   ),
                   Row(

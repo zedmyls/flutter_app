@@ -11,6 +11,8 @@ import 'package:flutter_app/app/modules/tabs/setting/address_list/bindings/addre
 import 'package:flutter_app/app/modules/tabs/setting/address_list/views/address_list_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/feedback/bindings/feedback_binding.dart';
 import 'package:flutter_app/app/modules/tabs/setting/feedback/views/feedback_view.dart';
+import 'package:flutter_app/app/modules/tabs/setting/general_setting/bindings/general_setting_binding.dart';
+import 'package:flutter_app/app/modules/tabs/setting/general_setting/views/general_setting_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/order_detail/bindings/order_detail_binding.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/order_detail/views/order_detail_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/order_preview/bindings/order_preview_binding.dart';
@@ -85,6 +87,11 @@ class AppPages {
               name: _Paths.FEEDBACK,
               page: () => FeedbackView(),
               binding: FeedbackBinding(),
+            ),
+            GetPage(
+              name: _Paths.GENERAL_SETTING,
+              page: () => GeneralSettingView(),
+              binding: GeneralSettingBinding(),
             ),
           ],
         ),

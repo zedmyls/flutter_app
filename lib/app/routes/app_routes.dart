@@ -23,6 +23,8 @@ abstract class Routes {
   static const ORDER_DETAIL =
       _Paths.TABS + _Paths.SETTING + _Paths.ORDER_DETAIL;
   static const FEEDBACK = _Paths.TABS + _Paths.SETTING + _Paths.FEEDBACK;
+  static const GENERAL_SETTING =
+      _Paths.TABS + _Paths.SETTING + _Paths.GENERAL_SETTING;
 }
 
 abstract class _Paths {
@@ -41,4 +43,5 @@ abstract class _Paths {
   static const ORDER_PREVIEW = '/order-preview';
   static const ORDER_DETAIL = '/order-detail';
   static const FEEDBACK = '/feedback';
+  static const GENERAL_SETTING = '/general-setting';
 }
