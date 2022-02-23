@@ -25,6 +25,11 @@ class UserController extends GetxController {
     }
   }
 
+  // 注销登录
+  logout() {
+    token = '';
+  }
+
   @override
   void onInit() {
     // String? cacheToken = StorageUtils.db.getString('cache-token-key');

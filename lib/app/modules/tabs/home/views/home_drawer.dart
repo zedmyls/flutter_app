@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/common/constant.dart';
+import 'package:flutter_app/app/common/user_controller.dart';
+import 'package:flutter_app/app/common/utils.dart';
 import 'package:get/get.dart';
 
 class HomeDrawer extends StatefulWidget {
@@ -27,8 +30,7 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin {
     DrawerList(
       index: DrawerIndex.Help,
       labelName: 'Help',
-      isAssetsImage: true,
-      imageName: '/assets/images/avatar.jpeg',
+      icon: Icon(Icons.help),
     ),
     DrawerList(
       index: DrawerIndex.FeedBack,
@@ -98,7 +100,7 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin {
                               ),
                               child: ClipRRect(
                                 borderRadius: const BorderRadius.all(Radius.circular(60.0)),
-                                child: Image.asset('assets/images/avatar.jpeg'),
+                                child: Image.network(defaultNetworkImg),
                               ),
                             ),
                           ),
@@ -143,24 +145,30 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin {
             ),
             Column(
               children: <Widget>[
-                ListTile(
-                  title: Text(
-                    'Sign Out',
-                    style: TextStyle(
-                      // fontFamily: AppTheme.fontName,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                      // color: AppTheme.darkText,
-                    ),
-                    textAlign: TextAlign.left,
-                  ),
-                  trailing: Icon(
-                    Icons.power_settings_new,
-                    color: Colors.red,
-                  ),
-                  onTap: () {
-                    onTapped();
-                  },
+                Obx(
+                  () => Get.find<UserController>().isLogin
+                      ? ListTile(
+                          title: Text(
+                            'Sign Out',
+                            style: TextStyle(
+                              // fontFamily: AppTheme.fontName,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                              // color: AppTheme.darkText,
+                            ),
+                            textAlign: TextAlign.left,
+                          ),
+                          trailing: Icon(
+                            Icons.power_settings_new,
+                            color: Colors.red,
+                          ),
+                          onTap: () {
+                            Get.find<UserController>().logout();
+                            Get.back();
+                            showSuccessMessage('已退出登录');
+                          },
+                        )
+                      : Container(),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).padding.bottom,
