@@ -5,6 +5,10 @@ import 'package:flutter_app/app/modules/login/bindings/login_binding.dart';
 import 'package:flutter_app/app/modules/login/views/login_view.dart';
 import 'package:flutter_app/app/modules/tabs/category/views/category_view.dart';
 import 'package:flutter_app/app/modules/tabs/home/views/home_view.dart';
+import 'package:flutter_app/app/modules/tabs/setting/account_setting/bindings/account_setting_binding.dart';
+import 'package:flutter_app/app/modules/tabs/setting/account_setting/verify_email/bindings/verify_email_binding.dart';
+import 'package:flutter_app/app/modules/tabs/setting/account_setting/verify_email/views/verify_email_view.dart';
+import 'package:flutter_app/app/modules/tabs/setting/account_setting/views/account_setting_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/address_list/address_edit/bindings/address_edit_binding.dart';
 import 'package:flutter_app/app/modules/tabs/setting/address_list/address_edit/views/address_edit_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/address_list/bindings/address_list_binding.dart';
@@ -92,6 +96,18 @@ class AppPages {
               name: _Paths.GENERAL_SETTING,
               page: () => GeneralSettingView(),
               binding: GeneralSettingBinding(),
+            ),
+            GetPage(
+              name: _Paths.ACCOUNT_SETTING,
+              page: () => AccountSettingView(),
+              binding: AccountSettingBinding(),
+              children: [
+                GetPage(
+                  name: _Paths.VERIFY_EMAIL,
+                  page: () => VerifyEmailView(),
+                  binding: VerifyEmailBinding(),
+                ),
+              ],
             ),
           ],
         ),

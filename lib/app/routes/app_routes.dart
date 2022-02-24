@@ -25,6 +25,12 @@ abstract class Routes {
   static const FEEDBACK = _Paths.TABS + _Paths.SETTING + _Paths.FEEDBACK;
   static const GENERAL_SETTING =
       _Paths.TABS + _Paths.SETTING + _Paths.GENERAL_SETTING;
+  static const ACCOUNT_SETTING =
+      _Paths.TABS + _Paths.SETTING + _Paths.ACCOUNT_SETTING;
+  static const VERIFY_EMAIL = _Paths.TABS +
+      _Paths.SETTING +
+      _Paths.ACCOUNT_SETTING +
+      _Paths.VERIFY_EMAIL;
 }
 
 abstract class _Paths {
@@ -44,4 +50,6 @@ abstract class _Paths {
   static const ORDER_DETAIL = '/order-detail';
   static const FEEDBACK = '/feedback';
   static const GENERAL_SETTING = '/general-setting';
+  static const ACCOUNT_SETTING = '/account-setting';
+  static const VERIFY_EMAIL = '/verify-email';
 }

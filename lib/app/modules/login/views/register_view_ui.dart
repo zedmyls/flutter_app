@@ -126,8 +126,11 @@ class RegisterViewUI extends GetView<RegisterController> {
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
                             return '邮箱地址不能为空';
+                          } else {
+                            if (RegExp(r'/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/').hasMatch(value)) {
+                              return '请输入正确的邮箱格式';
+                            }
                           }
-                          return null;
                         },
                         keyboardType: TextInputType.emailAddress,
                         style: TextStyle(fontSize: 18),

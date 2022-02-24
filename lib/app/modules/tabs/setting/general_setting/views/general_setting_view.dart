@@ -11,35 +11,29 @@ class GeneralSettingView extends StatelessWidget {
         context: context,
       ),
       body: Container(
-        color: Colors.white,
         child: ListView(
           padding: EdgeInsets.all(10.0),
           children: <Widget>[
-            ListTile(
-              onTap: () {},
-              leading: Icon(Icons.edit),
-              title: Text("My Orders"),
-            ),
-            ListTile(
-              onTap: () {},
-              leading: Icon(Icons.favorite_border),
-              title: Text("My Favorite"),
-            ),
             ListTile(
               onTap: () {},
               leading: Icon(Icons.account_balance_wallet),
               title: Text("Payment Details"),
             ),
             ListTile(
-              onTap: () {},
-              leading: Icon(context.isDarkMode ? Icons.dark_mode : Icons.light_mode),
+              leading: Image(
+                image: AssetImage(
+                  'assets/images/tabs/profile/${context.isDarkMode ? 'dark' : 'bright'}.png',
+                ),
+                width: 30,
+                fit: BoxFit.fitWidth,
+              ),
               trailing: Switch(
                 onChanged: (bool value) {
                   Get.changeTheme(Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
                 },
                 value: context.isDarkMode,
               ),
-              title: Text("My Account"),
+              title: Text("夜间模式"),
             ),
           ],
         ),

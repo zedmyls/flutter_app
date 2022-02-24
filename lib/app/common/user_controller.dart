@@ -30,6 +30,7 @@ class UserController extends GetxController {
   logout() {
     token = '';
     Get.find<ShopcartController>().cartList.clear();
+    _user.value = UserModel();
   }
 
   @override

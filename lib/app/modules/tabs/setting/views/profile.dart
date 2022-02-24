@@ -15,7 +15,7 @@ class ProfileView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Get.isDarkMode ? Color(0xff303030) : Theme.of(context).colorScheme.secondary,
+        backgroundColor: context.isDarkMode ? Color(0xff303030) : Theme.of(context).colorScheme.secondary,
         title: Text('Profile'),
         centerTitle: true,
       ),
@@ -32,7 +32,9 @@ class ProfileView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      buildOption('assets/images/tabs/profile/user_setting.png', '账号管理', false),
+                      buildOption('assets/images/tabs/profile/user_setting.png', '账号管理', false, onTap: () {
+                        Get.toNamed(Routes.ACCOUNT_SETTING);
+                      }),
                       buildOption('assets/images/tabs/profile/addr.png', '地址管理', false, onTap: () {
                         Get.toNamed(Routes.ADDRESS_LIST);
                       }),
