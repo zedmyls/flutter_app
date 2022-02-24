@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/common/user_controller.dart';
+import 'package:flutter_app/app/common/utils.dart';
 import 'package:flutter_app/app/common/views/my_app_bar.dart';
 import 'package:get/get.dart';
 
@@ -34,6 +36,24 @@ class GeneralSettingView extends StatelessWidget {
                 value: context.isDarkMode,
               ),
               title: Text("夜间模式"),
+            ),
+            Obx(
+              () => Get.find<UserController>().isLogin
+                  ? ListTile(
+                      onTap: () {
+                        Get.find<UserController>().logout();
+                        showSuccessMessage('已退出登录');
+                      },
+                      leading: Image(
+                        image: AssetImage(
+                          'assets/images/tabs/profile/exit.png',
+                        ),
+                        width: 30,
+                        fit: BoxFit.fitWidth,
+                      ),
+                      title: Text("退出登录"),
+                    )
+                  : Container(),
             ),
           ],
         ),
