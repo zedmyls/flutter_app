@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/app/common/constant.dart';
 import 'package:flutter_app/app/common/user_controller.dart';
 import 'package:flutter_app/app/common/utils.dart';
+import 'package:flutter_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 class HomeDrawer extends StatefulWidget {
@@ -24,32 +25,27 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin {
   final List drawerList = <DrawerList>[
     DrawerList(
       index: DrawerIndex.HOME,
-      labelName: 'Home',
+      labelName: '首页',
       icon: Icon(Icons.home),
     ),
     DrawerList(
-      index: DrawerIndex.Help,
-      labelName: 'Help',
-      icon: Icon(Icons.help),
-    ),
-    DrawerList(
       index: DrawerIndex.FeedBack,
-      labelName: 'FeedBack',
-      icon: Icon(Icons.help),
+      labelName: '意见反馈',
+      icon: Icon(Icons.feedback),
     ),
     DrawerList(
-      index: DrawerIndex.Invite,
-      labelName: 'Invite Friend',
-      icon: Icon(Icons.group),
+      index: DrawerIndex.SETTINGS,
+      labelName: '通用设置',
+      icon: Icon(Icons.settings),
     ),
     DrawerList(
       index: DrawerIndex.Share,
-      labelName: 'Rate the app',
+      labelName: '分享',
       icon: Icon(Icons.share),
     ),
     DrawerList(
       index: DrawerIndex.About,
-      labelName: 'About Us',
+      labelName: '关于我们',
       icon: Icon(Icons.info),
     ),
   ];
@@ -60,7 +56,7 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin {
       width: Get.width * 0.75,
       height: MediaQuery.of(context).size.height,
       child: Scaffold(
-        backgroundColor: Color(0xFFEDF0F2),
+        backgroundColor: Color(context.isDarkMode ? 0xff404040 : 0xFFEDF0F2),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -110,10 +106,9 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin {
                     Padding(
                       padding: const EdgeInsets.only(top: 8, left: 4),
                       child: Text(
-                        'Zed',
+                        Get.find<UserController>().user.nickname ?? '请登录',
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          color: Colors.black,
                           fontSize: 18,
                         ),
                       ),
@@ -181,17 +176,23 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin {
     );
   }
 
-  void onTapped() {
-    print('Doing Something...'); // Print to console.
-  }
-
   Widget inkwell(DrawerList listData) {
     return Material(
       color: Colors.transparent,
       child: InkWell(
         splashColor: Colors.grey.withOpacity(0.1),
         highlightColor: Colors.transparent,
-        onTap: () {},
+        onTap: () {
+          if (listData.index == DrawerIndex.HOME) {
+            Get.back();
+          } else if (listData.index == DrawerIndex.FeedBack) {
+            Get.back();
+            Get.toNamed(Routes.FEEDBACK);
+          } else if (listData.index == DrawerIndex.SETTINGS) {
+            Get.back();
+            Get.toNamed(Routes.GENERAL_SETTING);
+          }
+        },
         child: Stack(
           children: <Widget>[
             Container(
@@ -221,8 +222,12 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin {
                           child: Image.asset(listData.imageName,
                               color: DrawerIndex.HOME == listData.index ? Colors.blue : Colors.black),
                         )
-                      : Icon(listData.icon?.icon,
-                          color: DrawerIndex.HOME == listData.index ? Colors.blue : Colors.black),
+                      : Icon(
+                          listData.icon?.icon,
+                          color: DrawerIndex.HOME == listData.index
+                              ? Colors.blue
+                              : (context.isDarkMode ? Colors.white : Colors.black),
+                        ),
                   const Padding(
                     padding: EdgeInsets.all(4.0),
                   ),
@@ -278,11 +283,9 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin {
 enum DrawerIndex {
   HOME,
   FeedBack,
-  Help,
+  SETTINGS,
   Share,
   About,
-  Invite,
-  Testing,
 }
 
 class DrawerList {

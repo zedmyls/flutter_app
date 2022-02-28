@@ -13,7 +13,7 @@ class HttpUtils {
     if (_dio == null) {
       _dio ??= Dio();
 
-      _dio!.options.baseUrl = 'http://localhost:3000/api/';
+      _dio!.options.baseUrl = 'http://localhost:24747/api/';
       _dio!.options.connectTimeout = 10000;
       _dio!.options.receiveTimeout = 10000;
       _dio!.options.sendTimeout = 10000;
