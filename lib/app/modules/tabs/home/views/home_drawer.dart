@@ -105,11 +105,21 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 8, left: 4),
-                      child: Text(
-                        Get.find<UserController>().user.nickname ?? '请登录',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18,
+                      child: Obx(
+                        () => GestureDetector(
+                          onTap: Get.find<UserController>().user.nickname == null
+                              ? () {
+                                  Get.back();
+                                  Get.toNamed(Routes.LOGIN, arguments: 0);
+                                }
+                              : null,
+                          child: Text(
+                            Get.find<UserController>().user.nickname ?? '请登录',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                            ),
+                          ),
                         ),
                       ),
                     ),
