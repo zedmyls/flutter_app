@@ -44,7 +44,7 @@ String formatStarCount(int count) {
 }
 
 /// 带 loading_toast 的 请求
-loadingToast(Future Function() request, {Function(dio.Response res)? successCallback}) async {
+loadingToast(Future Function() request, {Function(dio.Response? res)? successCallback}) async {
   EasyLoading.instance.userInteractions = false; // loading时，禁止用户操作
   EasyLoading.show();
   final res = await request();

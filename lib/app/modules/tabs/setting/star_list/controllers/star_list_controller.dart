@@ -37,7 +37,7 @@ class StarListController extends GetRefreshController with GetIndexListMixin<Opt
     loadingToast(
       () => HttpUtils.instance.post(url, data: {'goods_id': id_}),
       successCallback: (res) {
-        showSuccessMessage(res.data['message']);
+        showSuccessMessage(res!.data['message']);
         refreshList();
       },
     );
@@ -59,7 +59,7 @@ class StarListController extends GetRefreshController with GetIndexListMixin<Opt
               },
             ), successCallback: (res) {
       // 后端是我之前写的，烂！
-      if (res.statusCode == 201) {
+      if (res!.statusCode == 201) {
         showSuccessMessage(res.data['message']);
         Get.find<ShopcartController>().load();
       }

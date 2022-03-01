@@ -19,7 +19,7 @@ class LoginController extends GetxController with GetParamsMixin<LoginRequest> {
         data: params.toJson(),
       ),
       successCallback: (res) {
-        Get.find<UserController>().token = res.data['token'];
+        Get.find<UserController>().token = res!.data['token'];
         Get.find<UserController>().load();
         Get.find<ShopcartController>().load();
         Get.back();

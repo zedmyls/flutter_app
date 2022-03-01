@@ -11,7 +11,7 @@ class AddressListController extends GetxController {
 
   load() async {
     loadingToast(() => HttpUtils.instance.get(url), successCallback: (res) {
-      list.value = res.data['addrList'].map((item) => AddrModel.fromJson(item)).toList();
+      list.value = res!.data['addrList'].map((item) => AddrModel.fromJson(item)).toList();
     });
   }
 

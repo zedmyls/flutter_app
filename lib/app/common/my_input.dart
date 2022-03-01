@@ -10,6 +10,7 @@ class MyInput extends StatefulWidget {
   final TextInputType? keyboardType;
   final ValueChanged? onChanged;
   final int maxLength;
+  final bool? focusToSelect;
 
   const MyInput({
     required this.label,
@@ -20,6 +21,7 @@ class MyInput extends StatefulWidget {
     this.keyboardType,
     this.onChanged,
     this.maxLength = 20,
+    this.focusToSelect = false,
     Key? key,
   }) : super(key: key);
 
@@ -29,16 +31,26 @@ class MyInput extends StatefulWidget {
 
 class _MyInputState extends State<MyInput> {
   late final TextEditingController _controller;
+  final FocusNode _focusNode = FocusNode();
 
   @override
   void initState() {
     _controller = TextEditingController();
+
+    _focusNode.addListener(() {
+      if (widget.focusToSelect != null && widget.focusToSelect! && _focusNode.hasFocus) {
+        _controller.selection = TextSelection(baseOffset: 0, extentOffset: _controller.text.length);
+      }
+    });
+
     super.initState();
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    _focusNode.unfocus();
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -68,6 +80,7 @@ class _MyInputState extends State<MyInput> {
                 child: widget.otherWidget == null
                     ? TextFormField(
                         controller: _controller,
+                        focusNode: _focusNode,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
                             return '${widget.label}不能为空';

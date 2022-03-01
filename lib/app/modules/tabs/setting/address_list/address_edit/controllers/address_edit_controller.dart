@@ -38,7 +38,7 @@ class AddressEditController extends GetxController with GetParamsMixin<AddrModel
             ),
       successCallback: (res) {
         Get.back();
-        showSuccessMessage(res.data['message']);
+        showSuccessMessage(res!.data['message']);
         Get.find<AddressListController>().load();
       },
     );
@@ -47,7 +47,7 @@ class AddressEditController extends GetxController with GetParamsMixin<AddrModel
   // 根据id回显地址
   load() {
     loadingToast(() => HttpUtils.instance.get('$url/$_id'), successCallback: (res) {
-      params = AddrModel.fromJson(res.data['addr']);
+      params = AddrModel.fromJson(res!.data['addr']);
     });
   }
 

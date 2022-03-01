@@ -24,7 +24,7 @@ class OrderDetailController extends GetxController {
 
   load() {
     loadingToast(() => HttpUtils.instance.get('$url/${Get.arguments}'), successCallback: (res) {
-      _order.value = OrderModel.fromJson(res.data['order']);
+      _order.value = OrderModel.fromJson(res!.data['order']);
       _addr.value = _order.value.addressId!;
       _status.value = _order.value.status ?? 1;
     });
@@ -48,7 +48,7 @@ class OrderDetailController extends GetxController {
       ),
       successCallback: (_) {
         _addr.value = res;
-        showSuccessMessage(_.data['message']);
+        showSuccessMessage(_!.data['message']);
       },
     );
   }
@@ -68,7 +68,7 @@ class OrderDetailController extends GetxController {
             // 刷新 全部，订单所属分类 列表
             _refreshOrderList([0, order.status!]);
             Get.back();
-            showSuccessMessage(res.data['message']);
+            showSuccessMessage(res!.data['message']);
             if (checked.value) Get.find<ShopcartController>().load();
           },
         );
@@ -112,7 +112,7 @@ class OrderDetailController extends GetxController {
       successCallback: (res) {
         // 刷新 全部，待付款，待发货 列表
         _refreshOrderList([0, 1, 2]);
-        EasyLoading.showSuccess(res.data['message']);
+        EasyLoading.showSuccess(res!.data['message']);
         _status.value = OrderStatus.waitingSend.status;
         Get.back();
       },

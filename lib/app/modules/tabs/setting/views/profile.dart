@@ -18,6 +18,17 @@ class ProfileView extends StatelessWidget {
         backgroundColor: context.isDarkMode ? Color(0xff303030) : Theme.of(context).colorScheme.secondary,
         title: Text('Profile'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Get.toNamed(Routes.UPDATE_INFO);
+            },
+            icon: Icon(
+              Icons.mode_edit_rounded,
+              size: 18,
+            ),
+          ),
+        ],
       ),
       body: Column(
         children: <Widget>[
@@ -105,22 +116,26 @@ class ProfileView extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Container(
-                        height: 140,
-                        width: 140,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: NetworkImage(_controller.user.avatar ?? defaultNetworkImg),
+                      Obx(
+                        () => Container(
+                          height: 140,
+                          width: 140,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: NetworkImage(_controller.user.avatar ?? defaultNetworkImg),
+                            ),
                           ),
                         ),
                       ),
                       SizedBox(height: 15.0),
-                      Text(
-                        '登录名: ${_controller.user.username}',
-                        style: TextStyle(color: Colors.white70),
-                      )
+                      Obx(
+                        () => Text(
+                          '登录名: ${_controller.user.username}',
+                          style: TextStyle(color: Colors.white70),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -151,22 +166,26 @@ class ProfileView extends StatelessWidget {
           Container(
             alignment: Alignment.center,
             padding: EdgeInsets.all(16.0),
-            child: Text(
-              _controller.user.nickname ?? '',
-              style: TextStyle(
-                fontSize: 25.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
+            child: Obx(
+              () => Text(
+                _controller.user.nickname ?? '',
+                style: TextStyle(
+                  fontSize: 25.0,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
           Container(
             alignment: Alignment.center,
             padding: EdgeInsets.all(8.0),
-            child: Text(
-              _controller.user.personalDesc ?? '这个人有点懒，还没有写个人简介',
-              style: TextStyle(
-                color: Colors.white70,
+            child: Obx(
+              () => Text(
+                _controller.user.personalDesc ?? '这个人有点懒，还没有写个人简介',
+                style: TextStyle(
+                  color: Colors.white70,
+                ),
               ),
             ),
           ),

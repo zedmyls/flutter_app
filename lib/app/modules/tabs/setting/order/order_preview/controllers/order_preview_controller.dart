@@ -24,7 +24,7 @@ class OrderPreviewController extends GetxController {
       () => HttpUtils.instance.get('$url/preview'),
       successCallback: (res) {
         int sum = 0;
-        _cartList.value = res.data['user']['cartList'].map(
+        _cartList.value = res!.data['user']['cartList'].map(
           (item) {
             CartItemModel cartItem = CartItemModel.fromJson(item);
             sum += cartItem.num! * cartItem.goodsId!.price!;
@@ -63,7 +63,7 @@ class OrderPreviewController extends GetxController {
         ),
         successCallback: (res) {
           Get.find<ShopcartController>().load();
-          Get.offAndToNamed(Routes.ORDER_DETAIL, arguments: res.data['id']);
+          Get.offAndToNamed(Routes.ORDER_DETAIL, arguments: res!.data['id']);
         },
       );
     }

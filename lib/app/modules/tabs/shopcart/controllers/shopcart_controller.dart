@@ -31,7 +31,7 @@ class ShopcartController extends GetxController {
         },
       ),
       successCallback: (res) {
-        if (res.statusCode == 200) {
+        if (res!.statusCode == 200) {
           loadingToast(() => load());
         }
       },
@@ -48,7 +48,7 @@ class ShopcartController extends GetxController {
         },
       ),
       successCallback: (res) {
-        if (res.statusCode == 201) {
+        if (res!.statusCode == 201) {
           loadingToast(() => load());
         }
       },
@@ -65,7 +65,7 @@ class ShopcartController extends GetxController {
         },
       ),
       successCallback: (res) {
-        if (res.statusCode == 200) {
+        if (res!.statusCode == 200) {
           loadingToast(() => load());
         }
       },
@@ -77,7 +77,7 @@ class ShopcartController extends GetxController {
     loadingToast(
       () => HttpUtils.instance.delete('$url/$goodsId'),
       successCallback: (res) {
-        if (res.statusCode == 204) {
+        if (res!.statusCode == 204) {
           loadingToast(() => load());
         }
       },

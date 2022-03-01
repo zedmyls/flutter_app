@@ -23,6 +23,8 @@ import 'package:flutter_app/app/modules/tabs/setting/order/order_preview/binding
 import 'package:flutter_app/app/modules/tabs/setting/order/order_preview/views/order_preview_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/star_list/bindings/star_list_binding.dart';
 import 'package:flutter_app/app/modules/tabs/setting/star_list/views/star_list_view.dart';
+import 'package:flutter_app/app/modules/tabs/setting/update_info/bindings/update_info_binding.dart';
+import 'package:flutter_app/app/modules/tabs/setting/update_info/views/update_info_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/views/setting_view.dart';
 import 'package:flutter_app/app/modules/tabs/shopcart/views/shopcart_view.dart';
 import 'package:flutter_app/app/modules/tabs/views/tabs_view.dart';
@@ -108,6 +110,11 @@ class AppPages {
                   binding: VerifyEmailBinding(),
                 ),
               ],
+            ),
+            GetPage(
+              name: _Paths.UPDATE_INFO,
+              page: () => UpdateInfoView(),
+              binding: UpdateInfoBinding(),
             ),
           ],
         ),

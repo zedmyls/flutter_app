@@ -57,7 +57,7 @@ class GoodsDetailController extends GetxController {
         },
       ),
       successCallback: (res) {
-        showSuccessMessage(res.data['message']);
+        showSuccessMessage(res!.data['message']);
         _isCollected.value = !_isCollected.value;
 
         if (Get.isRegistered<StarListController>()) {
