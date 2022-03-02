@@ -12,8 +12,10 @@ class HttpUtils {
   static _getInstance() {
     if (_dio == null) {
       _dio ??= Dio();
-
-      _dio!.options.baseUrl = 'http://localhost:24747/api/';
+      // 阿里云环境
+      _dio!.options.baseUrl = 'http://8.142.78.19:24747/api/';
+      //本地
+      // _dio!.options.baseUrl = 'http://localhost:24747/api/';
       _dio!.options.connectTimeout = 10000;
       _dio!.options.receiveTimeout = 10000;
       _dio!.options.sendTimeout = 10000;

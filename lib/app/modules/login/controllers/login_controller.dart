@@ -4,7 +4,6 @@ import 'package:flutter_app/app/common/network/global.dart';
 import 'package:flutter_app/app/common/user_controller.dart';
 import 'package:flutter_app/app/common/utils.dart';
 import 'package:flutter_app/app/modules/login/login_request_model.dart';
-import 'package:flutter_app/app/modules/tabs/shopcart/controllers/shopcart_controller.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController with GetParamsMixin<LoginRequest> {
@@ -20,8 +19,6 @@ class LoginController extends GetxController with GetParamsMixin<LoginRequest> {
       ),
       successCallback: (res) {
         Get.find<UserController>().token = res!.data['token'];
-        Get.find<UserController>().load();
-        Get.find<ShopcartController>().load();
         Get.back();
         showSuccessMessage(res.data['message']);
       },

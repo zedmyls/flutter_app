@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/common/cache/storage_utils.dart';
 import 'package:flutter_app/app/common/user_controller.dart';
 import 'package:flutter_app/app/common/utils.dart';
 import 'package:flutter_app/app/common/views/my_app_bar.dart';
@@ -32,6 +33,7 @@ class GeneralSettingView extends StatelessWidget {
               trailing: Switch(
                 onChanged: (bool value) {
                   Get.changeTheme(Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
+                  StorageUtils.db.setBool('cache-is_dark_mode-key', value);
                 },
                 value: context.isDarkMode,
               ),

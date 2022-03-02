@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/common/views/BottomSheetView.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -123,4 +124,12 @@ class FormatUtils {
   static String formatTime(String time) {
     return DateFormat('yyyy-MM-dd hh:mm:ss').format(DateTime.parse(time));
   }
+}
+
+/// bottomSheet
+showMyBottomSheet(List<BottomSheetItem> list) {
+  Get.bottomSheet(
+    BottomSheetView(list),
+    isScrollControlled: true,
+  );
 }
