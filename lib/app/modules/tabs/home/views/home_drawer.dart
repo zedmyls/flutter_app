@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/app/common/constant.dart';
 import 'package:flutter_app/app/common/user_controller.dart';
 import 'package:flutter_app/app/common/utils.dart';
 import 'package:flutter_app/app/routes/app_pages.dart';
@@ -96,7 +95,7 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin {
                               ),
                               child: ClipRRect(
                                 borderRadius: const BorderRadius.all(Radius.circular(60.0)),
-                                child: Image.network(defaultNetworkImg),
+                                child: Image.network(Get.find<UserController>().avatar),
                               ),
                             ),
                           ),

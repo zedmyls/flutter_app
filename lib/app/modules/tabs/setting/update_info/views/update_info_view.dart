@@ -1,10 +1,15 @@
+import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
-import 'package:flutter_app/app/common/constant.dart';
 import 'package:flutter_app/app/common/user_controller.dart';
+import 'package:flutter_app/app/common/utils.dart';
 import 'package:flutter_app/app/common/views/my_buttons.dart';
 import 'package:get/get.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../../../common/my_input.dart';
+import '../../../../../common/network/global.dart';
+import '../../../../../common/views/BottomSheetView.dart';
 import '../controllers/update_info_controller.dart';
 
 class UpdateInfoView extends GetView<UpdateInfoController> {
@@ -43,7 +48,7 @@ class UpdateInfoView extends GetView<UpdateInfoController> {
                     height: double.infinity,
                     width: double.infinity,
                     child: Image.network(
-                      defaultNetworkImg,
+                      Get.find<UserController>().avatar,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -60,7 +65,24 @@ class UpdateInfoView extends GetView<UpdateInfoController> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        showMyBottomSheet([
+                          BottomSheetItem(
+                              title: '拍照',
+                              onTap: () async {
+                                final ImagePicker _picker = ImagePicker();
+                                final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+                                print(image);
+                              }),
+                          BottomSheetItem(
+                              title: '从相册选择',
+                              onTap: () async {
+                                final ImagePicker _picker = ImagePicker();
+                                final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+                                if (image != null) _cropImage(image);
+                              }),
+                        ]);
+                      },
                     ),
                   ),
                 ],
@@ -104,5 +126,37 @@ class UpdateInfoView extends GetView<UpdateInfoController> {
         ),
       ),
     );
+  }
+
+  // 裁剪图片
+  _cropImage(XFile image) async {
+    var croppedFile = await ImageCropper().cropImage(
+      cropStyle: CropStyle.circle,
+      sourcePath: image.path,
+      androidUiSettings: AndroidUiSettings(
+        toolbarTitle: '编辑图片',
+        toolbarColor: Colors.white,
+        toolbarWidgetColor: Colors.black,
+        initAspectRatio: CropAspectRatioPreset.original,
+        lockAspectRatio: false,
+      ),
+      iosUiSettings: IOSUiSettings(
+        minimumAspectRatio: 1.0,
+      ),
+    );
+
+    if (croppedFile != null) {
+      final res = await HttpUtils.instance.post(
+        'upload',
+        data: dio.FormData.fromMap(
+          {
+            'file': await dio.MultipartFile.fromFile(croppedFile.path),
+          },
+        ),
+      );
+      print(res.data['url']);
+      Get.find<UserController>().avatar = res.data['url'];
+      showSuccessMessage('更新头像成功');
+    }
   }
 }

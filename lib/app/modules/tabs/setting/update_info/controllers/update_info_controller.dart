@@ -31,8 +31,8 @@ class UpdateInfoController extends GetxController with GetParamsMixin<UserUpdate
   void onInit() {
     obsParams.update((val) {
       val!.nickname = Get.find<UserController>().user.nickname!;
-      val.personalDesc = Get.find<UserController>().user.personalDesc!;
-      val.avatar = Get.find<UserController>().user.avatar!;
+      val.personalDesc = Get.find<UserController>().user.personalDesc ?? '';
+      val.avatar = Get.find<UserController>().avatar;
     });
     super.onInit();
   }

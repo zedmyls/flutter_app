@@ -13,9 +13,9 @@ class HttpUtils {
     if (_dio == null) {
       _dio ??= Dio();
       // 阿里云环境
-      _dio!.options.baseUrl = 'http://8.142.78.19:24747/api/';
+      // _dio!.options.baseUrl = 'http://8.142.78.19:24747/api/';
       //本地
-      // _dio!.options.baseUrl = 'http://localhost:24747/api/';
+      _dio!.options.baseUrl = 'http://localhost:24747/api/';
       _dio!.options.connectTimeout = 10000;
       _dio!.options.receiveTimeout = 10000;
       _dio!.options.sendTimeout = 10000;
@@ -35,6 +35,9 @@ class HttpUtils {
             return handler.next(res);
           },
           onError: (error, _) {
+            print('-------------------');
+            print(error);
+            print('-------------------');
             if (error.response!.statusCode! >= 400 && error.response!.statusCode! < 500) {
               if (error.response!.statusCode! == 404) {
                 showErrorMessage('服务端错误，请稍后再试');

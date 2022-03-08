@@ -9,6 +9,7 @@ import 'cache/storage_utils.dart';
 class UserController extends GetxController {
   String get url => 'user';
   final _user = UserModel().obs;
+  final _avatar = ''.obs;
 
   UserModel get user => _user.value;
 
@@ -16,6 +17,12 @@ class UserController extends GetxController {
 
   bool get isLogin => _token.value.isNotEmpty;
   String get token => _token.value;
+
+  set avatar(String url) {
+    _avatar.value = url;
+  }
+
+  String get avatar => _avatar.value;
 
   set token(String token) {
     _setToken();
@@ -25,6 +32,7 @@ class UserController extends GetxController {
   load() async {
     final res = await HttpUtils.instance.get(url);
     _user.value = UserModel.fromJson(res.data!['user']);
+    avatar = _user.value.avatar!;
   }
 
   // 注销登录
