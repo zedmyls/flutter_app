@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/common/views/keep_alive_tab_view.dart';
 import 'package:flutter_app/app/common/views/my_app_bar.dart';
-import 'package:flutter_app/app/modules/tabs/home/goodsList/views/goods_list_view.dart';
 import 'package:flutter_app/app/modules/tabs/home/views/home_drawer.dart';
 import 'package:flutter_app/app/modules/tabs/home/views/home_swiper.dart';
 import 'package:flutter_app/app/modules/tabs/home/views/my_tab_bar.dart';
@@ -9,6 +8,7 @@ import 'package:flutter_app/app/modules/tabs/home/views/search_bar_ui.dart';
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
+import '../goods_list/views/goods_list_view.dart';
 
 class HomeView extends GetView<HomeController> {
   @override

@@ -10,9 +10,11 @@ class MyTabBar<T extends HomeController> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color: Get.isDarkMode ? Color(0xff303030) : Color(0xfff9f9f9),
+      ),
       width: Get.width,
       height: 50,
-      color: Get.isDarkMode ? Color(0xff303030) : Color(0xfff9f9f9),
       padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: TabBar(
         isScrollable: isScrollable,
@@ -21,7 +23,7 @@ class MyTabBar<T extends HomeController> extends StatelessWidget {
             .map(
               (e) => Tab(
                 child: Text(
-                  e.value!,
+                  e.key!,
                   style: TextStyle(
                     color: Get.isDarkMode ? Colors.white : Colors.black,
                   ),

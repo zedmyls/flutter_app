@@ -1,4 +1,5 @@
 import 'package:flutter_app/app/common/user_controller.dart';
+import 'package:flutter_app/app/modules/tabs/category/category_goods_list/controllers/category_goods_list_controller.dart';
 import 'package:flutter_app/app/modules/tabs/category/controllers/category_controller.dart';
 import 'package:flutter_app/app/modules/tabs/controllers/tabs_controller.dart';
 import 'package:flutter_app/app/modules/tabs/setting/controllers/setting_controller.dart';
@@ -18,6 +19,7 @@ class AppBinding extends Bindings {
 
     Get.put(SettingController(), permanent: true);
     Get.put(CategoryController(), permanent: true);
+    Get.put(CategoryGoodsListController(), permanent: true);
 
     // 这两个Controller的put先后顺序不能变
     Get.put(ShopcartController(), permanent: true);
