@@ -72,7 +72,7 @@ class UpdateInfoView extends GetView<UpdateInfoController> {
                               onTap: () async {
                                 final ImagePicker _picker = ImagePicker();
                                 final XFile? image = await _picker.pickImage(source: ImageSource.camera);
-                                print(image);
+                                if (image != null) _cropImage(image);
                               }),
                           BottomSheetItem(
                               title: '从相册选择',

@@ -53,7 +53,10 @@ class BottomSheetView extends StatelessWidget {
           fontSize: 18,
         ),
       ),
-      onTap: item.onTap,
+      onTap: () {
+        if (item.onTap != null) item.onTap!();
+        Get.back();
+      },
     );
   }
 }

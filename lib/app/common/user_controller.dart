@@ -37,7 +37,7 @@ class UserController extends GetxController {
 
   // 注销登录
   logout() {
-    token = '';
+    _token.value = '';
     StorageUtils.db.setString('cache-token-key', '');
     Get.find<ShopcartController>().cartList.clear();
     _user.value = UserModel();

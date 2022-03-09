@@ -12,15 +12,6 @@ class HomeDrawer extends StatefulWidget {
 }
 
 class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin {
-  AnimationController? iconAnimationController;
-
-  @override
-  void initState() {
-    iconAnimationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 0));
-    iconAnimationController?.animateTo(1.0, duration: const Duration(milliseconds: 0), curve: Curves.fastOutSlowIn);
-    super.initState();
-  }
-
   final List drawerList = <DrawerList>[
     DrawerList(
       index: DrawerIndex.HOME,
@@ -69,38 +60,38 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    AnimatedBuilder(
-                      animation: iconAnimationController!,
-                      builder: (BuildContext context, Widget? child) {
-                        return ScaleTransition(
-                          scale: AlwaysStoppedAnimation<double>(1.0 - (iconAnimationController!.value) * 0.2),
-                          child: RotationTransition(
-                            turns: AlwaysStoppedAnimation<double>(Tween<double>(begin: 0.0, end: 24.0)
-                                    .animate(
-                                        CurvedAnimation(parent: iconAnimationController!, curve: Curves.fastOutSlowIn))
-                                    .value /
-                                360),
-                            child: Container(
-                              height: 120,
-                              width: 120,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                boxShadow: <BoxShadow>[
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.6),
-                                    offset: const Offset(2.0, 4.0),
-                                    blurRadius: 8,
-                                  ),
-                                ],
-                              ),
-                              child: ClipRRect(
-                                borderRadius: const BorderRadius.all(Radius.circular(60.0)),
-                                child: Image.network(Get.find<UserController>().avatar),
-                              ),
-                            ),
+                    Container(
+                      height: 120,
+                      width: 120,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        boxShadow: <BoxShadow>[
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.6),
+                            offset: const Offset(2.0, 4.0),
+                            blurRadius: 8,
                           ),
-                        );
-                      },
+                        ],
+                      ),
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.all(Radius.circular(60.0)),
+                        child: Obx(
+                          () => Get.find<UserController>().isLogin
+                              ? Image.network(
+                                  Get.find<UserController>().avatar,
+                                  fit: BoxFit.cover,
+                                )
+                              : GestureDetector(
+                                  onTap: () {
+                                    Get.back();
+                                    Get.toNamed(Routes.LOGIN, arguments: 0);
+                                  },
+                                  child: Image(
+                                    image: AssetImage('assets/images/default_avatar.png'),
+                                  ),
+                                ),
+                        ),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 8, left: 4),
@@ -253,33 +244,21 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin {
               ),
             ),
             DrawerIndex.HOME == listData.index
-                ? AnimatedBuilder(
-                    animation: iconAnimationController!,
-                    builder: (BuildContext context, Widget? child) {
-                      return Transform(
-                        transform: Matrix4.translationValues(
-                            (MediaQuery.of(context).size.width * 0.75 - 64) *
-                                (1.0 - iconAnimationController!.value - 1.0),
-                            0.0,
-                            0.0),
-                        child: Padding(
-                          padding: EdgeInsets.only(top: 8, bottom: 8),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.75 - 64,
-                            height: 46,
-                            decoration: BoxDecoration(
-                              color: Colors.blue.withOpacity(0.2),
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(0),
-                                topRight: Radius.circular(28),
-                                bottomLeft: Radius.circular(0),
-                                bottomRight: Radius.circular(28),
-                              ),
-                            ),
-                          ),
+                ? Padding(
+                    padding: EdgeInsets.only(top: 8, bottom: 8),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.75 - 64,
+                      height: 46,
+                      decoration: BoxDecoration(
+                        color: Colors.blue.withOpacity(0.2),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(0),
+                          topRight: Radius.circular(28),
+                          bottomLeft: Radius.circular(0),
+                          bottomRight: Radius.circular(28),
                         ),
-                      );
-                    },
+                      ),
+                    ),
                   )
                 : const SizedBox()
           ],
