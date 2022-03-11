@@ -19,6 +19,7 @@ dependencies:
   flutter_swiper_null_safety: ^1.0.2
   image_picker: ^0.8.4+10
   image_cropper: ^1.5.0
+  intro_views_flutter: ^3.2.0
 
   flutter: 
     sdk: flutter
@@ -33,6 +34,7 @@ flutter:
     - assets/images/
     - assets/images/icon/
     - assets/images/tabs/
+    - assets/images/guide/
     - assets/images/tabs/profile/
     - assets/images/tabs/cart/
 

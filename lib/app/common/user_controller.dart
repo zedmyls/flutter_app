@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_app/app/common/models/user_model.dart';
 import 'package:flutter_app/app/common/network/global.dart';
 import 'package:flutter_app/app/modules/tabs/shopcart/controllers/shopcart_controller.dart';
@@ -58,11 +57,6 @@ class UserController extends GetxController {
 
   // 本地已经存在token
   _initToken() async {
-    // 初始化缓存管理器
-    await StorageUtils.init();
-    // 检查主题色
-    _isDarkMode();
-
     String? cacheToken = StorageUtils.db.getString('cache-token-key');
 
     if (cacheToken != null && cacheToken.isNotEmpty) {
@@ -73,10 +67,5 @@ class UserController extends GetxController {
         Get.find<ShopcartController>().load();
       }
     }
-  }
-
-  _isDarkMode() {
-    bool? isDarkMode = StorageUtils.db.getBool('cache-is_dark_mode-key');
-    if (isDarkMode != null) Get.changeTheme(isDarkMode ? ThemeData.dark() : ThemeData.light());
   }
 }

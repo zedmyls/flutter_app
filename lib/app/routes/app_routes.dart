@@ -32,6 +32,8 @@ abstract class Routes {
       _Paths.ACCOUNT_SETTING +
       _Paths.VERIFY_EMAIL;
   static const UPDATE_INFO = _Paths.TABS + _Paths.SETTING + _Paths.UPDATE_INFO;
+  static const GUIDE = _Paths.GUIDE;
+  static const START = _Paths.START;
 }
 
 abstract class _Paths {
@@ -54,4 +56,6 @@ abstract class _Paths {
   static const ACCOUNT_SETTING = '/account-setting';
   static const VERIFY_EMAIL = '/verify-email';
   static const UPDATE_INFO = '/update-info';
+  static const GUIDE = '/guide';
+  static const START = '/start';
 }

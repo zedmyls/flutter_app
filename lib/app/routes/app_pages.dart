@@ -1,8 +1,11 @@
-import 'package:get/get.dart';
-
+import 'package:flutter_app/app/common/cache/storage_utils.dart';
 import 'package:flutter_app/app/modules/goods_detail/views/goods_detail_view.dart';
+import 'package:flutter_app/app/modules/guide/bindings/guide_binding.dart';
+import 'package:flutter_app/app/modules/guide/views/guide_view.dart';
 import 'package:flutter_app/app/modules/login/bindings/login_binding.dart';
 import 'package:flutter_app/app/modules/login/views/login_view.dart';
+import 'package:flutter_app/app/modules/start/bindings/start_binding.dart';
+import 'package:flutter_app/app/modules/start/views/start_view.dart';
 import 'package:flutter_app/app/modules/tabs/category/views/category_view.dart';
 import 'package:flutter_app/app/modules/tabs/home/views/home_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/account_setting/bindings/account_setting_binding.dart';
@@ -28,6 +31,7 @@ import 'package:flutter_app/app/modules/tabs/setting/update_info/views/update_in
 import 'package:flutter_app/app/modules/tabs/setting/views/setting_view.dart';
 import 'package:flutter_app/app/modules/tabs/shopcart/views/shopcart_view.dart';
 import 'package:flutter_app/app/modules/tabs/views/tabs_view.dart';
+import 'package:get/get.dart';
 
 import '../modules/tabs/setting/order/order_list/bindings/order_list_binding.dart';
 import '../modules/tabs/setting/order/order_list/views/order_list_view.dart';
@@ -37,7 +41,21 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.TABS;
+  static final INITIAL = _initialPage();
+
+  // 是否是第一次安装
+  static String get localKey => 'cache-is-first-installed';
+
+  static String _initialPage() {
+    final String? isFirstInstalled = StorageUtils.db.getString(localKey);
+
+    if (isFirstInstalled != null) {
+      return Routes.START;
+    } else {
+      StorageUtils.db.setString(localKey, 'ok');
+      return Routes.GUIDE;
+    }
+  }
 
   static final routes = [
     GetPage(
@@ -131,6 +149,16 @@ class AppPages {
     GetPage(
       name: _Paths.GOODS_DETAIL,
       page: () => GoodsDetailView(),
+    ),
+    GetPage(
+      name: _Paths.GUIDE,
+      page: () => GuideView(),
+      binding: GuideBinding(),
+    ),
+    GetPage(
+      name: _Paths.START,
+      page: () => StartView(),
+      binding: StartBinding(),
     ),
   ];
 }
