@@ -16,9 +16,6 @@ class StartView extends GetView<StartController> {
               style: TextStyle(fontSize: 20),
             ),
           ),
-          // onTap: () {
-          //
-          // },
         ),
       ),
     );
