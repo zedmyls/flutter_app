@@ -31,6 +31,8 @@ class AddressListView extends GetView<AddressListController> {
       ),
       bottomNavigationBar: SafeArea(
         child: Container(
+          // 适配android
+          margin: EdgeInsets.only(bottom: 20),
           padding: EdgeInsets.symmetric(horizontal: 20),
           height: 44,
           child: GradientButton(

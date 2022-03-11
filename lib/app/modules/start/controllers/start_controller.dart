@@ -12,7 +12,10 @@ class StartController extends GetxController {
   @override
   void onInit() {
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      if (_countDown.value <= 1) goHome();
+      if (_countDown.value <= 1) {
+        goHome();
+      }
+      ;
       _countDown.value--;
     });
 

@@ -8,16 +8,17 @@ class StartView extends GetView<StartController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Obx(
-          () => GestureDetector(
-            child: Text(
+        child: GestureDetector(
+          onDoubleTap: () => controller.goHome(),
+          child: Obx(
+            () => Text(
               '跳过 ${controller.countDown}s',
               style: TextStyle(fontSize: 20),
             ),
-            onTap: () {
-              controller.goHome();
-            },
           ),
+          // onTap: () {
+          //
+          // },
         ),
       ),
     );
