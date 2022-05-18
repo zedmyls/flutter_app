@@ -148,14 +148,14 @@ class StarItemView extends StatelessWidget {
                           _controller.priceReduce();
                         },
                       ),
-                      IconButton(
-                        onPressed: () {
-                          _controller.addToCart(item.id_!);
-                        },
-                        icon: Image(
-                          image: AssetImage('assets/images/icon/cart_button.png'),
-                        ),
-                      ),
+                      // IconButton(
+                      //   onPressed: () {
+                      //     _controller.addToCart(item.id_!);
+                      //   },
+                      //   icon: Image(
+                      //     image: AssetImage('assets/images/icon/cart_button.png'),
+                      //   ),
+                      // ),
                     ],
                   )
                 ],

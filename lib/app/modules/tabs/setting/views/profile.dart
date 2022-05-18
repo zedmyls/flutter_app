@@ -96,12 +96,12 @@ class ProfileView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        'Familiar',
+                        '',
                         style: TextStyle(color: Colors.white),
                       ),
                       SizedBox(height: 5.0),
                       Text(
-                        '12',
+                        '',
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -144,12 +144,12 @@ class ProfileView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        'Fallowing',
+                        '',
                         style: TextStyle(color: Colors.white),
                       ),
                       SizedBox(height: 5.0),
                       Text(
-                        '18',
+                        '',
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
