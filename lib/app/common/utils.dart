@@ -136,19 +136,29 @@ showMyBottomSheet(List<BottomSheetItem> list) {
 }
 
 Future<void> launch(String url) async {
-  /// 先判断是否可以launch url
-  if (await UrlLauncherPlatform.instance.canLaunch(url)) {
-    /// 如果可以则启动
-    await UrlLauncherPlatform.instance.launch(
-      url,
-      useSafariVC: false,
-      useWebView: false,
-      enableJavaScript: false,
-      enableDomStorage: false,
-      universalLinksOnly: false,
-      headers: <String, String>{},
-    );
-  } else {
-    print("Cannot Launch Url");
-  }
+  await UrlLauncherPlatform.instance.launch(
+    url,
+    useSafariVC: false,
+    useWebView: false,
+    enableJavaScript: false,
+    enableDomStorage: false,
+    universalLinksOnly: false,
+    headers: <String, String>{},
+  );
+
+  // /// 先判断是否可以launch url
+  // if (await UrlLauncherPlatform.instance.canLaunch(url)) {
+  //   /// 如果可以则启动
+  //   await UrlLauncherPlatform.instance.launch(
+  //     url,
+  //     useSafariVC: false,
+  //     useWebView: false,
+  //     enableJavaScript: false,
+  //     enableDomStorage: false,
+  //     universalLinksOnly: false,
+  //     headers: <String, String>{},
+  //   );
+  // } else {
+  //   print("Cannot Launch Url");
+  // }
 }
