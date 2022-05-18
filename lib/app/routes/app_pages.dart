@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+
 import 'package:flutter_app/app/common/cache/storage_utils.dart';
 import 'package:flutter_app/app/modules/goods_detail/views/goods_detail_view.dart';
 import 'package:flutter_app/app/modules/guide/bindings/guide_binding.dart';
@@ -24,6 +26,8 @@ import 'package:flutter_app/app/modules/tabs/setting/order/order_detail/bindings
 import 'package:flutter_app/app/modules/tabs/setting/order/order_detail/views/order_detail_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/order_preview/bindings/order_preview_binding.dart';
 import 'package:flutter_app/app/modules/tabs/setting/order/order_preview/views/order_preview_view.dart';
+import 'package:flutter_app/app/modules/tabs/setting/reset_psw/bindings/reset_psw_binding.dart';
+import 'package:flutter_app/app/modules/tabs/setting/reset_psw/views/reset_psw_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/star_list/bindings/star_list_binding.dart';
 import 'package:flutter_app/app/modules/tabs/setting/star_list/views/star_list_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/update_info/bindings/update_info_binding.dart';
@@ -31,7 +35,6 @@ import 'package:flutter_app/app/modules/tabs/setting/update_info/views/update_in
 import 'package:flutter_app/app/modules/tabs/setting/views/setting_view.dart';
 import 'package:flutter_app/app/modules/tabs/shopcart/views/shopcart_view.dart';
 import 'package:flutter_app/app/modules/tabs/views/tabs_view.dart';
-import 'package:get/get.dart';
 
 import '../modules/tabs/setting/order/order_list/bindings/order_list_binding.dart';
 import '../modules/tabs/setting/order/order_list/views/order_list_view.dart';
@@ -133,6 +136,11 @@ class AppPages {
               name: _Paths.UPDATE_INFO,
               page: () => UpdateInfoView(),
               binding: UpdateInfoBinding(),
+            ),
+            GetPage(
+              name: _Paths.RESET_PSW,
+              page: () => ResetPswView(),
+              binding: ResetPswBinding(),
             ),
           ],
         ),
