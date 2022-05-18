@@ -153,7 +153,6 @@ class UpdateInfoView extends GetView<UpdateInfoController> {
           },
         ),
       );
-      print(res.data['url']);
       Get.find<UserController>().avatar = res.data['url'];
       showSuccessMessage('更新头像成功');
     }

@@ -21,6 +21,7 @@ void main() async {
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       defaultTransition: Transition.cupertino,
+      debugShowCheckedModeBanner: false,
       // 初始化 toast
       builder: EasyLoading.init(),
     ),

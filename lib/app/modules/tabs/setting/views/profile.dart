@@ -15,7 +15,7 @@ class ProfileView extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: context.isDarkMode ? Color(0xff303030) : Theme.of(context).colorScheme.secondary,
-        title: Text('Profile'),
+        title: Text('我的'),
         centerTitle: true,
         actions: [
           IconButton(

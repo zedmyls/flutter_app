@@ -11,15 +11,15 @@ class GuideView extends StatelessWidget {
       title: Container(),
       body: Column(
         children: <Widget>[
-          Text('Welcome to Smart Wallet'),
+          Text('Welcome to Flutter App'),
           Text(
-            'Plan your finance, anytime, anywhere.',
+            '随时随地，为您的宝贝选购礼物',
             style: TextStyle(color: Colors.black54, fontSize: 16.0),
           ),
         ],
       ),
       mainImage: Image.asset(
-        'assets/images/guide/wallet1.png',
+        'assets/images/guide/start_up_1.png',
         width: 285.0,
         alignment: Alignment.center,
       ),
@@ -32,15 +32,15 @@ class GuideView extends StatelessWidget {
       title: Container(),
       body: Column(
         children: <Widget>[
-          Text('One Touch Send Money'),
+          Text('丰富商品'),
           Text(
-            'Send money in just one touch and organize your wallet smart.',
+            '让您的选择多种多样',
             style: TextStyle(color: Colors.black54, fontSize: 16.0),
           ),
         ],
       ),
       mainImage: Image.asset(
-        'assets/images/guide/wallet2.png',
+        'assets/images/guide/start_up_2.png',
         width: 285.0,
         alignment: Alignment.center,
       ),
@@ -53,15 +53,15 @@ class GuideView extends StatelessWidget {
       title: Container(),
       body: Column(
         children: <Widget>[
-          Text('Automatically Organize'),
+          Text('贴心设计'),
           Text(
-            'Organize your expenses and incomes and secure your wallet with pin.',
+            '精简UI，只为让您满意',
             style: TextStyle(color: Colors.black54, fontSize: 16.0),
           ),
         ],
       ),
       mainImage: Image.asset(
-        'assets/images/guide/wallet3.png',
+        'assets/images/guide/start_up_3.png',
         width: 285.0,
         alignment: Alignment.center,
       ),
@@ -82,7 +82,7 @@ class GuideView extends StatelessWidget {
               },
               showSkipButton: false,
               doneText: Text(
-                "Get Started",
+                "开始",
               ),
               pageButtonsColor: Colors.indigo,
               pageButtonTextStyles: TextStyle(
