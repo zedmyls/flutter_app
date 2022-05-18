@@ -49,15 +49,15 @@ class AccountSettingView extends StatelessWidget {
                       ),
               ),
             ),
-            ListTile(
-              onTap: Get.find<UserController>().user.safeLevel == 1
-                  ? () {
-                      Get.toNamed(Routes.RESET_PSW);
-                    }
-                  : null,
-              leading: Icon(Icons.account_balance_wallet),
-              title: Text("修改登录密码"),
-            ),
+            Obx(() => ListTile(
+                  onTap: Get.find<UserController>().user.safeLevel == 1
+                      ? () {
+                          Get.toNamed(Routes.RESET_PSW);
+                        }
+                      : null,
+                  leading: Icon(Icons.account_balance_wallet),
+                  title: Text("修改登录密码"),
+                )),
           ],
         ),
       ),

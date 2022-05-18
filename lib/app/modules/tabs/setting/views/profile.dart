@@ -56,7 +56,9 @@ class ProfileView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      buildOption('assets/images/tabs/profile/about_us.png', '关于我们', false),
+                      buildOption('assets/images/tabs/profile/about_us.png', '关于我们', false,onTap: (){
+                        Get.toNamed(Routes.ABOUT_US);
+                      }),
                       buildOption('assets/images/daifufeizhangdan.png', '意见反馈', false, onTap: () {
                         Get.toNamed(Routes.FEEDBACK);
                       }),

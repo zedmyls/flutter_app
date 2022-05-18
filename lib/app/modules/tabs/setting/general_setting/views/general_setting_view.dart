@@ -18,11 +18,6 @@ class GeneralSettingView extends StatelessWidget {
           padding: EdgeInsets.all(10.0),
           children: <Widget>[
             ListTile(
-              onTap: () {},
-              leading: Icon(Icons.account_balance_wallet),
-              title: Text("Payment Details"),
-            ),
-            ListTile(
               leading: Image(
                 image: AssetImage(
                   'assets/images/tabs/profile/${context.isDarkMode ? 'dark' : 'bright'}.png',

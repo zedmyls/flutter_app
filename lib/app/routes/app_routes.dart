@@ -35,6 +35,7 @@ abstract class Routes {
   static const GUIDE = _Paths.GUIDE;
   static const START = _Paths.START;
   static const RESET_PSW = _Paths.TABS + _Paths.SETTING + _Paths.RESET_PSW;
+  static const ABOUT_US = _Paths.TABS + _Paths.SETTING + _Paths.ABOUT_US;
 }
 
 abstract class _Paths {
@@ -60,4 +61,5 @@ abstract class _Paths {
   static const GUIDE = '/guide';
   static const START = '/start';
   static const RESET_PSW = '/reset-psw';
+  static const ABOUT_US = '/about-us';
 }

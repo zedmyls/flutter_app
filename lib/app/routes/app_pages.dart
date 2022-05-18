@@ -10,6 +10,8 @@ import 'package:flutter_app/app/modules/start/bindings/start_binding.dart';
 import 'package:flutter_app/app/modules/start/views/start_view.dart';
 import 'package:flutter_app/app/modules/tabs/category/views/category_view.dart';
 import 'package:flutter_app/app/modules/tabs/home/views/home_view.dart';
+import 'package:flutter_app/app/modules/tabs/setting/about_us/bindings/about_us_binding.dart';
+import 'package:flutter_app/app/modules/tabs/setting/about_us/views/about_us_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/account_setting/bindings/account_setting_binding.dart';
 import 'package:flutter_app/app/modules/tabs/setting/account_setting/verify_email/bindings/verify_email_binding.dart';
 import 'package:flutter_app/app/modules/tabs/setting/account_setting/verify_email/views/verify_email_view.dart';
@@ -141,6 +143,11 @@ class AppPages {
               name: _Paths.RESET_PSW,
               page: () => ResetPswView(),
               binding: ResetPswBinding(),
+            ),
+            GetPage(
+              name: _Paths.ABOUT_US,
+              page: () => AboutUsView(),
+              binding: AboutUsBinding(),
             ),
           ],
         ),

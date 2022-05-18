@@ -4,6 +4,7 @@ import 'package:flutter_app/app/common/views/BottomSheetView.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher_platform_interface/url_launcher_platform_interface.dart';
 
 /// snackBar 错误通知
 void showErrorMessage(String message) {
@@ -132,4 +133,22 @@ showMyBottomSheet(List<BottomSheetItem> list) {
     BottomSheetView(list),
     isScrollControlled: true,
   );
+}
+
+Future<void> launch(String url) async {
+  /// 先判断是否可以launch url
+  if (await UrlLauncherPlatform.instance.canLaunch(url)) {
+    /// 如果可以则启动
+    await UrlLauncherPlatform.instance.launch(
+      url,
+      useSafariVC: false,
+      useWebView: false,
+      enableJavaScript: false,
+      enableDomStorage: false,
+      universalLinksOnly: false,
+      headers: <String, String>{},
+    );
+  } else {
+    print("Cannot Launch Url");
+  }
 }
