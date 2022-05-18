@@ -29,11 +29,6 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin {
       icon: Icon(Icons.settings),
     ),
     DrawerList(
-      index: DrawerIndex.Share,
-      labelName: '分享',
-      icon: Icon(Icons.share),
-    ),
-    DrawerList(
       index: DrawerIndex.About,
       labelName: '关于我们',
       icon: Icon(Icons.info),
@@ -191,6 +186,9 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin {
           } else if (listData.index == DrawerIndex.SETTINGS) {
             Get.back();
             Get.toNamed(Routes.GENERAL_SETTING);
+          } else if (listData.index == DrawerIndex.About) {
+            Get.back();
+            Get.toNamed(Routes.ABOUT_US);
           }
         },
         child: Stack(
