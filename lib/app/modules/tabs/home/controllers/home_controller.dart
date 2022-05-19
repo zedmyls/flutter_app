@@ -10,6 +10,13 @@ class HomeController extends GetxController with GetSingleTickerProviderStateMix
     OptionModel(key: '最新', value: GoodsType.newGoods.value),
   ];
   late TabController tabController;
+  final _query = ''.obs;
+
+  String get query => _query.value;
+
+  set query(String val) {
+    _query.value = val.trim().toLowerCase();
+  }
 
   @override
   void onInit() {

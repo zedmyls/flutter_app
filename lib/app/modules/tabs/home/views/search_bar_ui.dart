@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/modules/tabs/home/controllers/home_controller.dart';
+import 'package:flutter_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
-class SearchBarUI extends StatelessWidget {
+class SearchBarUI extends GetView<HomeController> {
   const SearchBarUI({Key? key}) : super(key: key);
 
   @override
@@ -26,14 +28,16 @@ class SearchBarUI extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16, top: 4, bottom: 4),
                   child: TextField(
-                    onChanged: (String txt) {},
+                    onChanged: (String txt) {
+                      controller.query = txt;
+                    },
                     style: const TextStyle(
                       fontSize: 18,
                     ),
                     cursorColor: Theme.of(context).colorScheme.secondary,
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'London...',
+                      hintText: '搜索商品...',
                     ),
                   ),
                 ),
@@ -59,9 +63,18 @@ class SearchBarUI extends StatelessWidget {
                 onTap: () {
                   FocusScope.of(context).requestFocus(FocusNode());
                 },
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Icon(Icons.search, size: 20, color: Colors.white),
+                child: Obx(
+                  () => GestureDetector(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Icon(Icons.search, size: 20, color: Colors.white),
+                    ),
+                    onTap: controller.query.trim().isNotEmpty
+                        ? () {
+                            Get.toNamed(Routes.HOME_SEARCH, arguments: controller.query);
+                          }
+                        : null,
+                  ),
                 ),
               ),
             ),

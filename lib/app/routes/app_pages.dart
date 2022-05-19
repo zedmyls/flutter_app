@@ -9,6 +9,8 @@ import 'package:flutter_app/app/modules/login/views/login_view.dart';
 import 'package:flutter_app/app/modules/start/bindings/start_binding.dart';
 import 'package:flutter_app/app/modules/start/views/start_view.dart';
 import 'package:flutter_app/app/modules/tabs/category/views/category_view.dart';
+import 'package:flutter_app/app/modules/tabs/home/home_search/bindings/home_search_binding.dart';
+import 'package:flutter_app/app/modules/tabs/home/home_search/views/home_search_view.dart';
 import 'package:flutter_app/app/modules/tabs/home/views/home_view.dart';
 import 'package:flutter_app/app/modules/tabs/setting/about_us/bindings/about_us_binding.dart';
 import 'package:flutter_app/app/modules/tabs/setting/about_us/views/about_us_view.dart';
@@ -75,6 +77,13 @@ class AppPages {
         GetPage(
           name: _Paths.HOME,
           page: () => HomeView(),
+          children: [
+            GetPage(
+              name: _Paths.HOME_SEARCH,
+              page: () => HomeSearchView(),
+              binding: HomeSearchBinding(),
+            ),
+          ],
         ),
         GetPage(
           name: _Paths.SETTING,

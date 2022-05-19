@@ -36,6 +36,7 @@ abstract class Routes {
   static const START = _Paths.START;
   static const RESET_PSW = _Paths.TABS + _Paths.SETTING + _Paths.RESET_PSW;
   static const ABOUT_US = _Paths.TABS + _Paths.SETTING + _Paths.ABOUT_US;
+  static const HOME_SEARCH = _Paths.TABS + _Paths.HOME + _Paths.HOME_SEARCH;
 }
 
 abstract class _Paths {
@@ -62,4 +63,5 @@ abstract class _Paths {
   static const START = '/start';
   static const RESET_PSW = '/reset-psw';
   static const ABOUT_US = '/about-us';
+  static const HOME_SEARCH = '/home-search';
 }
